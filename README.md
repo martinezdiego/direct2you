@@ -1,6 +1,6 @@
-# Delivery2You 
+# Direct2You 
 
-> web application for delivery services
+> A web platform for delivery services
 
 ## Usage
 
