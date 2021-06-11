@@ -1,0 +1,54 @@
+/* * {
+  color: rgb(95, 95, 95);
+} */
+
+.navbar {
+  position: relative;
+  z-index: 10;
+  max-width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px #f0f1f2;
+}
+
+.nav-ul-left {
+  float: left;
+  list-style: none;
+  display: flex;
+}
+
+.nav-ul-right {
+  float: right;
+  list-style: none;
+  display: flex;
+  padding-right: 30px;
+}
+
+.menu-icon {
+  font-size: 20px;
+  color: #1890ff;
+}
+
+ul.nav-ul-right > li > span.anticon {
+  font-size: 17px;
+  padding: 0 20px;
+}
+
+.nav-title {
+  font-size: 18px;
+  color: rgba(0,0,0,.85);;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.nav-user-img {
+  height: 40px;
+  width: 40px;  
+  vertical-align: middle;
+  border-radius: 50%;  
+  right: 10px;
+  border: 1px solid #dedede;    
+}
+
+.ant-layout-header {
+  padding: 0px;
+}

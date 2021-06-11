@@ -1,0 +1,7 @@
+ul.ant-menu {
+    box-shadow: 2px 0px 8px #f0f1f2 !important;
+}
+
+li.ant-menu-submenu svg {
+    font-size: 17px;
+}
