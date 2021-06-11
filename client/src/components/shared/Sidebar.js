@@ -10,7 +10,7 @@ import {
   CarOutlined,
   LinkOutlined,
 } from '@ant-design/icons';
-import '../../assets/css/sidebar.css';
+import '../../assets/css/Sidebar.css';
 
 const { SubMenu } = Menu;
 
