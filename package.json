@@ -1,16 +1,23 @@
 {
   "name": "direct2you",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "web application for delivery services",
-  "license": "MIT",
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon app.js",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "node app.js",
+    "build": "cd client && npm install && npm run build"
   },
   "dependencies": {
-    "body-parser": "^1.18.3",
-    "express": "^4.16.4"
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.1",
+    "mysql": "^2.18.1",
+    "sequelize": "^6.6.2"
   },
   "devDependencies": {
     "concurrently": "^4.0.1",
