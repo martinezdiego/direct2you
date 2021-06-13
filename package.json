@@ -7,7 +7,7 @@
     "server": "nodemon app.js",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "start": "node app.js",
-    "build": "cd client && npm install && npm run build"
+    "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
