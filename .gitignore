@@ -24,5 +24,3 @@ yarn-debug.log*
 yarn-error.log*
 package-lock.json
 /client/package-lock.json
-yarn.lock
-/client/yarn.lock
