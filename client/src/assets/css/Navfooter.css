@@ -1,0 +1,41 @@
+.Container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.Column{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-left: 40px;    
+}
+
+.Row{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,
+                            minmax(185px, 1fr));
+    grid-gap: 30px;
+    
+    @media (max-width: 1000px) {
+        grid-template-columns: repeat(auto-fill,
+                            minmax(200px, 1fr));
+    }
+}
+
+.ButtonFooter{
+    color: black;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 15px;
+    display: flexbox;
+    justify-content: center;
+}
+
+.Heading{
+    font-size: 18px;
+    color: black ;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
