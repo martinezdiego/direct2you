@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Switch, Divider } from 'antd';
+import { Menu, Switch, Divider, Layout } from 'antd';
 import {
   DashboardOutlined,
   UserOutlined,
@@ -13,6 +13,7 @@ import {
 import '../../assets/css/Sidebar.css';
 
 const { SubMenu } = Menu;
+const {Sider} = Layout
 
 function Sidebar(props) {
 
@@ -28,13 +29,23 @@ function Sidebar(props) {
     };
 
     return(
-        <>            
+        <>
+        <Sider
+            style={{
+                overflow: 'auto',
+                height: '100vh',
+                position: 'fixed',
+                left: 0,
+                background:'#fff'
+            }}
+        >            
             <Menu
                 style={{ width: 256, fontSize: '16px' }}
                 defaultSelectedKeys={['1']}
                 defaultOpenKeys={['sub1']}
                 mode={mode}
                 theme={theme}
+
             >
                 <Menu.Item key="1" icon={<DashboardOutlined />}>
                 Tablero
@@ -69,6 +80,7 @@ function Sidebar(props) {
             <Switch onChange={changeMode} /> Change Mode
             <Divider type="vertical" />
             <Switch onChange={changeTheme} /> Change Style            
+        </Sider>
         </>
     );
 }
