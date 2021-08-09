@@ -1,7 +1,9 @@
 {
   "name": "direct2you",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "web application for delivery services",
+  "keywords": [],
+  "license": "MIT",
   "scripts": {
     "client": "cd client && yarn start",
     "server": "nodemon app.js",
@@ -14,10 +16,11 @@
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.16.4",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
-    "mysql": "^2.18.1",
+    "mysql2": "^2.3.0",
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
