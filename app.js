@@ -2,24 +2,20 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 
+const settings = require('./settings');
+
+const models = require('./models');
+
 const app = express();
-const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/api/hello', (req, res) => {
+app.get('/', (req, res) => {
   res.send({ express: 'Hello From Express' });
 });
 
-app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
-});
-
-if (process.env.NODE_ENV === 'production') {
+if (settings.env === 'production') {
   // Serve any static files
   app.use(express.static(path.join(__dirname, 'client/build')));
 
@@ -29,4 +25,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-app.listen(port, () => console.log(`Listening on port ${port}`)); 
+models.sequelize.sync();
+
+app.listen(settings.port, () => console.log(`Listening on port ${settings.port}`)); 
