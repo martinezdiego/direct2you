@@ -6,13 +6,19 @@ const settings = require('./settings');
 
 const models = require('./models');
 
+const usuario = require('./routes/usuario');
+const tipoUsuario = require('./routes/tipoUsuario');
+
 const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => {
-  res.send({ express: 'Hello From Express' });
+app.use("/api/usuarios", usuario);
+app.use("/api/tipo_usuarios", tipoUsuario);
+
+app.use("/", (req, res) => {
+  res.send({express: "Hello from express"});
 });
 
 if (settings.env === 'production') {
