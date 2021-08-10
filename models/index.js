@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 
 const settings = require('../settings');
 
@@ -13,5 +13,17 @@ const db = {};
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+db.tipoUsuario = require('./tipoUsuario')(sequelize, DataTypes);
+db.usuario = require('./usuario')(sequelize, DataTypes);
+
+db.tipoUsuario.hasOne(db.usuario, {
+    foreignKey: "fk_tipo_usuario"
+});
+db.usuario.belongsTo(db.tipoUsuario,
+    {
+        foreignKey: "fk_tipo_usuario"
+    }
+);
 
 module.exports = db;
