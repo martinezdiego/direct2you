@@ -40,8 +40,17 @@ exports.findAll = async (req, res) => {
     }
 };
 
-exports.findOne = (req, res) => {
-  
+exports.findOne = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const usuario = await Usuario.findByPk(id);
+        res.send(usuario);
+    }
+    catch (err) {
+        res.status(500).send({
+            message: err.message || `Ocurrio un error al obtener usuario con id ${id}`
+        });
+    }
 };
 
 exports.update = (req, res) => {
