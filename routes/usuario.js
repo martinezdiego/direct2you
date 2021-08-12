@@ -10,7 +10,7 @@ router.get("/:id", usuario.findOne);
 
 router.put("/:id", usuario.update);
 
-router.put("/:id/eliminar", usuario.delete);
+router.delete("/:id/eliminar", usuario.delete);
 
 router.delete("/todos/eliminar", usuario.deleteAll);
 
