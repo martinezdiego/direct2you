@@ -14,7 +14,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/api/usuario", usuario);
+app.use("/api/usuarios", usuario);
 app.use("/api/tipo_usuarios", tipoUsuario);
 
 app.use("/", (req, res) => {

@@ -4,14 +4,14 @@ const router = require('express').Router();
 
 router.post("/crear", usuario.create);
 
-router.get("/todos", usuario.findAll);
+router.get("/", usuario.findAll);
 
 router.get("/:id", usuario.findOne);
 
 router.put("/:id", usuario.update);
 
-router.delete("/:id/eliminar", usuario.delete);
+router.delete("/:id", usuario.delete);
 
-router.delete("/todos/eliminar", usuario.deleteAll);
+router.delete("/", usuario.deleteAll);
 
 module.exports = router;
