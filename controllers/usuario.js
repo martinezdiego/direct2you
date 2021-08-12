@@ -79,8 +79,24 @@ exports.update = async (req, res) => {
     }
 };
 
-exports.delete = (req, res) => {
-  
+exports.delete = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const response = await Usuario.destroy({
+            where : { id_usuario : id }
+        });
+        if (response == 1) {
+            res.send({ status: true, message: "usuario fue eliminado" });
+        }
+        else {
+            res.send({ status: false, message: "usuario no fue eliminado" });
+        }
+    }
+    catch (err) {
+        res.status(500).send({
+            message: err.message || `Ocurrio un error al eliminar usuario con id ${id}`
+        });
+    }
 };
 
 exports.deleteAll = (req, res) => {
