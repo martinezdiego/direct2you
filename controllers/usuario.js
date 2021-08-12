@@ -53,8 +53,30 @@ exports.findOne = async (req, res) => {
     }
 };
 
-exports.update = (req, res) => {
-  
+exports.update = async (req, res) => {
+    const { id } = req.params;
+    const data  = req.body;
+    try {
+        const usuario = await Usuario.findByPk(id);
+        
+        usuario.nombre_usuario = data.nombre_usuario;
+        usuario.apellido = data.apellido;
+        usuario.correo_usuario = data.correo_usuario;
+        usuario.contrasena = data.contrasena;
+        usuario.num_telefono_usuario = data.num_telefono_usuario;
+        usuario.num_cedula = data.num_cedula;
+        usuario.estado_usuario = data.estado_usuario;
+        usuario.url_imagen_usuario = data.url_imagen_usuario;
+        
+        await usuario.save();
+        
+        res.send(usuario);
+    }
+    catch (err) {
+        res.status(500).send({
+            message: err.message || `Ocurrio un error al actualizar usuario con id ${id}`
+        });
+    }
 };
 
 exports.delete = (req, res) => {
