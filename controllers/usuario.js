@@ -2,10 +2,10 @@ const db = require('../models');
 
 const Usuario = db.usuario;
 
-exports.create = (req, res) => {
+exports.create = async (req, res) => {
     const { body } = req;
 
-    const usuario = {
+    const data = {
         nombre_usuario: body.nombre_usuario,
         apellido: body.apellido,
         correo_usuario: body.correo_usuario,
@@ -16,28 +16,28 @@ exports.create = (req, res) => {
         url_imagen_usuario: body.url_imagen_usuario,
         fk_tipo_usuario: body.fk_tipo_usuario
     };
-
-    Usuario.create(usuario)
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while creating Usuario."
-            });
+    
+    try {
+        const usuario = await Usuario.create(data);
+        res.send(usuario);
+    }
+    catch (err) {
+        res.status(500).send({
+            message: err.message || "Ocurrio un error al crear Usuario."
         });
+    }
 };
 
-exports.findAll = (req, res) => {
-    Usuario.findAll()
-        .then(data => {
-            res.send(data);
-        })
-        .catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while retrieving Usuarios."
-            });
+exports.findAll = async (req, res) => {
+    try {
+        const usuarios = await Usuario.findAll();
+        res.send(usuarios);
+    }
+    catch (err) {
+        res.status(500).send({
+            message: err.message || "Ocurrio un error al obtener Usuarios."
         });
+    }
 };
 
 exports.findOne = (req, res) => {
@@ -53,9 +53,5 @@ exports.delete = (req, res) => {
 };
 
 exports.deleteAll = (req, res) => {
-  
-};
-
-exports.findAllPublished = (req, res) => {
   
 };
