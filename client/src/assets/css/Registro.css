@@ -1,0 +1,36 @@
+.Col-right{
+  float: right;
+  width: 50%;
+  padding: 20px;
+}
+.Col-div{
+  display: grid;
+}
+
+.icon{
+  font-size: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.Col-left{
+  float: left;
+  width: 50%;
+  padding: 20px;
+}
+.h1-reg{
+  font-weight: bold;
+  text-align: center;
+}
+.p-left{
+  font-weight: bold;
+  font-size:15px;
+  color:black;
+  margin-left: 4px;
+  margin-top: 10px;
+}
+
+@media screen and (max-width:600px) {
+  .Col-right, .Col-left{
+    width: 100%;
+  }
+}
