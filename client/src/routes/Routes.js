@@ -3,14 +3,15 @@ import { BrowserRouter, Switc, Route, Switch } from 'react-router-dom';
 
 //Components
 import Dashboard2 from '../pages/Dashboard2';
-import Login from '../pages/login.js'
+import Login from '../pages/login'
+import Registro from '../pages/Registro'
 
 function Routes() {
 
   return (
    <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={ Login }/>
+      <Route exact path="/" component={ Registro }/>
     </Switch>
    </BrowserRouter>
   );
