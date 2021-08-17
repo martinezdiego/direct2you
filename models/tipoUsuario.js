@@ -12,5 +12,14 @@ module.exports = (sequelize, DataTypes) => {
         underscore: true,
         timestamps: false
     });
+    
+    TipoUsuario.associate = (models) => {
+        const { Usuario } = models;
+        
+        TipoUsuario.hasOne(Usuario, {
+            foreignKey: "fk_tipo_usuario"
+        });
+    };
+    
     return TipoUsuario;
 };

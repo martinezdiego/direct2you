@@ -19,5 +19,14 @@ module.exports = (sequelize, DataTypes) => {
         underscore: true,
         timestamps: false
     });
+    
+    Usuario.associate = (models) => {
+        const { TipoUsuario } = models;
+        
+        Usuario.belongsTo(TipoUsuario, {
+            foreignKey: "fk_tipo_usuario"
+        });
+    }
+    
     return Usuario;
 }; 
