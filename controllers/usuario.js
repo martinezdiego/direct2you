@@ -1,32 +1,89 @@
+const { body, validationResult } = require('express-validator');
+
 const db = require('../models');
 
 const Usuario = db.usuario;
 
-exports.create = async (req, res) => {
-    const { body } = req;
+exports.create = [
+    body('nombre_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .isLength({ min: 1, max: 255 })
+        .withMessage('must have length more than 0 and less than 256')
+        .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
+        .withMessage('must have only letters and could use a blank space as separator of two names'),
+    body('apellido')
+        .exists()
+        .withMessage('must be specified')
+        .isLength({ min: 1, max: 255 })
+        .withMessage('must have length more than 0 or less than 256')
+        .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
+        .withMessage('must have only letters and could use a blank space as separator of two names'),
+    body('correo_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .isEmail(),
+    body('contrasena')
+        .exists()
+        .withMessage('must be specified')
+        .isLength({ min: 8 })
+        .withMessage('must be at least 8 chars long')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+        .withMessage('must have at least 1 lowercase alphabetical character, 1 uppercase alphabetical character, 1 numeric character and 1 special character'),
+    body('num_telefono_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
+        .withMessage('must be a valid phone number'),
+    body('num_cedula')
+        .exists()
+        .withMessage('must be specified')
+        .matches(/^[V|E|J|G]-?[0-9]{8}-?[0-9]?/)
+        .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number'),
+    body('estado_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .isIn(['habilitado', 'deshabilitado'])
+        .withMessage('must be a valid type'),
+    body('url_imagen_usuario')
+        .exists()
+        .withMessage('must be specified'),
+    body('fk_tipo_usuario')
+        .exists()
+        .withMessage('must be specified'),
+    async (req, res) => {
+        const errors = validationResult(req); 
 
-    const data = {
-        nombre_usuario: body.nombre_usuario,
-        apellido: body.apellido,
-        correo_usuario: body.correo_usuario,
-        contrasena: body.contrasena,
-        num_telefono_usuario: body.num_telefono_usuario,
-        num_cedula: body.num_cedula,
-        estado_usuario: body.estado_usuario,
-        url_imagen_usuario: body.url_imagen_usuario,
-        fk_tipo_usuario: body.fk_tipo_usuario
-    };
-    
-    try {
-        const usuario = await Usuario.create(data);
-        res.send(usuario);
+        if (!errors.isEmpty()) {
+            res.status(422).json({ errors: errors.array() });
+            return;
+        }
+
+        const { body } = req;
+
+        const data = {
+            nombre_usuario: body.nombre_usuario,
+            apellido: body.apellido,
+            correo_usuario: body.correo_usuario,
+            contrasena: body.contrasena,
+            num_telefono_usuario: body.num_telefono_usuario,
+            num_cedula: body.num_cedula,
+            estado_usuario: body.estado_usuario,
+            url_imagen_usuario: body.url_imagen_usuario,
+            fk_tipo_usuario: body.fk_tipo_usuario
+        };
+        
+        try {
+            const usuario = await Usuario.create(data);
+            res.send(usuario);
+        }
+        catch (err) {
+            res.status(500).send({
+                message: err.message || "unexpected error has been occurred when creating user."
+            });
+        }
     }
-    catch (err) {
-        res.status(500).send({
-            message: err.message || "Ocurrio un error al crear Usuario."
-        });
-    }
-};
+];
 
 exports.findAll = async (req, res) => {
     try {
