@@ -17,7 +17,7 @@ function Navbar(props) {
                 </ul>
                 <ul className="nav-ul-right">
                     <li><BellOutlined /></li>
-                    <li><img src={userpic} className="nav-user-img"/></li>
+                    <li><img src={userpic} className="nav-user-img" alt=''></img></li>
                 </ul>
             </Header>
         );

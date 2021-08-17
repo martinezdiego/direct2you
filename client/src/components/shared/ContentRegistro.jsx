@@ -8,7 +8,7 @@ import '../../assets/css/Navfooter.css';
 
 const { Content } = Layout;
 
-function ContentLogin(props) {
+function ContentRegistro(props) {
 
   return(
     <Content style={{ padding: '0 50px', marginTop: 64 }}>
@@ -75,4 +75,4 @@ function ContentLogin(props) {
   );
 }
 
-export default ContentLogin;
+export default ContentRegistro;

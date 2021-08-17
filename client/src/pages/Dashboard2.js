@@ -1,6 +1,6 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Col, Row, Layout } from 'antd';
+import { Layout } from 'antd';
 import Navbar from '../components/shared/Navbar';
 import Sidebar from '../components/shared/Sidebar';
 import NavFooter from '../components/shared/footer';

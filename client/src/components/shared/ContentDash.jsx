@@ -1,15 +1,10 @@
 import React from 'react';
 import { Layout } from 'antd';
 import '../../assets/css/Navfooter.css';
-{/*
-import userpic from '../../assets/img/user-icon-image-13.jpg';
-*/}
 
 const { Content } = Layout;
 
 function ContentDash(props) {
-  const style = { background:'#0092ff',padding: '8px 0' };
-
   return(
     <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
       <div className="site-layout-background" style={{ padding: 24, textAlign: 'center' }}>
