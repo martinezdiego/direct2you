@@ -4,9 +4,6 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../../assets/css/form.css';
 import 'antd/dist/antd.css';
 import '../../assets/css/Navfooter.css';
-{/*
-import userpic from '../../assets/img/user-icon-image-13.jpg';
-*/}
 
 const { Content } = Layout;
 
@@ -63,7 +60,7 @@ function ContentLogin(props) {
             </Button>
             <div style={{textAlign:'center'}}>
               <Form.Item >
-                ¿Aun no tienes una cuenta? | <a href="">Registrate Ahora!</a>
+                ¿Aun no tienes una cuenta? | <a href="#ir pagina de registro">Registrate Ahora!</a>
                 <br/>
                 <a href="#Ir pagina recuperar contra">¿Olvidaste la contraseña?</a>
               </Form.Item>

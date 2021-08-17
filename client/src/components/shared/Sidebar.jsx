@@ -8,7 +8,6 @@ import {
   InboxOutlined,
   ShopOutlined,
   CarOutlined,
-  LinkOutlined,
 } from '@ant-design/icons';
 import '../../assets/css/Sidebar.css';
 

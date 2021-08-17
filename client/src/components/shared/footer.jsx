@@ -4,9 +4,6 @@ import 'antd/dist/antd.css';
 import logo from '../../assets/img/logoDirect2You.jpg';
 import { FacebookOutlined,InstagramOutlined,WhatsAppOutlined } from '@ant-design/icons';
 import '../../assets/css/Navfooter.css';
-{/*
-import userpic from '../../assets/img/user-icon-image-13.jpg';
-*/}
 
 const { Footer } = Layout;
 
