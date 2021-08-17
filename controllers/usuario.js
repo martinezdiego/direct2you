@@ -1,8 +1,6 @@
 const { body, validationResult } = require('express-validator');
 
-const db = require('../models');
-
-const Usuario = db.usuario;
+const { Usuario } = require('../models');
 
 exports.create = [
     body('nombre_usuario')

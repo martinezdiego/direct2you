@@ -9,21 +9,15 @@ const sequelize = new Sequelize(dbSettings.name, dbSettings.user, dbSettings.pas
     dialect: dbSettings.dialect,
 }); 
 
-const db = {};
+const models = {};
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+models.TipoUsuario = require('./tipoUsuario')(sequelize, DataTypes);
+models.Usuario = require('./usuario')(sequelize, DataTypes);
 
-db.tipoUsuario = require('./tipoUsuario')(sequelize, DataTypes);
-db.usuario = require('./usuario')(sequelize, DataTypes);
+models.TipoUsuario.associate(models);
+models.Usuario.associate(models);
 
-db.tipoUsuario.hasOne(db.usuario, {
-    foreignKey: "fk_tipo_usuario"
-});
-db.usuario.belongsTo(db.tipoUsuario,
-    {
-        foreignKey: "fk_tipo_usuario"
-    }
-);
+models.sequelize = sequelize;
+models.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = models;
