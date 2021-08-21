@@ -20,7 +20,15 @@ exports.create = [
     body('correo_usuario')
         .exists()
         .withMessage('must be specified')
-        .isEmail(),
+        .isEmail()
+        .withMessage('must be a valid email address')
+        .custom(async (value) => {
+            const usuario = await Usuario.findOne({ where: { correo_usuario: value } });
+            if (usuario) {
+                throw new Error('e-mail already in use');
+            }
+            return true;
+        }),
     body('contrasena')
         .exists()
         .withMessage('must be specified')
@@ -32,12 +40,26 @@ exports.create = [
         .exists()
         .withMessage('must be specified')
         .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
-        .withMessage('must be a valid phone number'),
+        .withMessage('must be a valid phone number')
+        .custom(async (value) => {
+            const usuario = await Usuario.findOne({ where: { num_telefono_usuario: value } });
+            if (usuario) {
+                throw new Error('phone number already in use');
+            }
+            return true;
+        }),
     body('num_cedula')
         .exists()
         .withMessage('must be specified')
         .matches(/^[V|E|J|G]-?[0-9]{8}-?[0-9]?/)
-        .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number'),
+        .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number')
+        .custom(async (value) => {
+            const usuario = await Usuario.findOne({ where: { num_cedula: value } });
+            if (usuario) {
+                throw new Error('cedula or rif already in use');
+            }
+            return true;
+        }),
     body('estado_usuario')
         .exists()
         .withMessage('must be specified')
