@@ -3,9 +3,13 @@ module.exports = (sequelize, DataTypes) => {
         id_tipo_usuario: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false
         },
-        nombre_tipo_usuario: DataTypes.STRING
+        nombre_tipo_usuario: {
+            type: DataTypes.STRING,
+            allowNull: false
+        }
     }, {
         sequelize,
         tableName: "tipo_usuario",

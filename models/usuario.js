@@ -3,16 +3,41 @@ module.exports = (sequelize, DataTypes) => {
         id_usuario: {
             type: DataTypes.INTEGER,
             primaryKey: true,
-            autoIncrement: true
+            autoIncrement: true,
+            allowNull: false
         },
-        nombre_usuario: DataTypes.STRING,
-        apellido: DataTypes.STRING,
-        correo_usuario: DataTypes.STRING,
-        contrasena: DataTypes.STRING,
-        num_telefono_usuario: DataTypes.STRING(15),
-        num_cedula: DataTypes.STRING(15),
-        estado_usuario: DataTypes.STRING(15),
-        url_imagen_usuario: DataTypes.STRING(15)
+        nombre_usuario: { 
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        apellido: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        correo_usuario: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
+        contrasena: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        num_telefono_usuario: {
+            type: DataTypes.STRING(15),
+            allowNull: false,
+            unique: true
+        },
+        num_cedula: {
+            type: DataTypes.STRING(15),
+            allowNull: false,
+            unique: true
+        },
+        estado_usuario: {
+            type: DataTypes.STRING(15),
+            allowNull: false
+        },
+        url_imagen_usuario: DataTypes.STRING(45)
     },{
         sequelize,
         tableName: "usuario",
