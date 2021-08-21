@@ -1,6 +1,4 @@
-const db = require('../models');
-
-const TipoUsuario = db.tipoUsuario;
+const { TipoUsuario } = require('../models');
 
 exports.create = (req, res) => {
     const { body } = req;
