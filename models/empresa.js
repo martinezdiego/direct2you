@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(15),
             allowNull: false
         },
-        url_imagen_empresa: DataTypes.STRING(45)
+        url_imagen_empresa: DataTypes.STRING(45),
     },{
         sequelize,
         tableName: "empresa",
@@ -38,10 +38,13 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Empresa.associate = (models) => {
-        const { CategoriaEmpresa } = models;
+        const { CategoriaEmpresa, Ubicacion } = models;
         
         Empresa.belongsTo(CategoriaEmpresa, {
             foreignKey: "fk_id_categoria_empresa"
+        });
+        Empresa.belongsTo(Ubicacion, {
+            foreignKey: "fk_id_ubicacion"
         });
     }
     
