@@ -2,14 +2,14 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //Components
-import Registro from '../pages/Registro'
+import RegistroEmpresa from '../pages/RegistroEmpresa'
 
 function Routes() {
 
   return (
    <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={ Registro }/>
+      <Route exact path="/" component={ RegistroEmpresa }/>
     </Switch>
    </BrowserRouter>
   );
