@@ -9,6 +9,7 @@ const models = require('./models');
 const usuario = require('./routes/usuario');
 const tipoUsuario = require('./routes/tipoUsuario');
 const empresa = require('./routes/empresa');
+const categoriaEmpresa = require('./routes/categoriaEmpresa');
 
 const app = express();
 
@@ -17,7 +18,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/usuarios", usuario);
 app.use("/api/tipo_usuarios", tipoUsuario);
-app.use("/api/empresa", empresa);
+app.use("/api/empresas", empresa);
+app.use("/api/categoria_empresas", categoriaEmpresa);
 
 app.use("/", (req, res) => {
   res.send({express: "Hello from express"});
