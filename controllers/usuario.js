@@ -1,4 +1,4 @@
-const { body, validationResult } = require('express-validator');
+const { body, param, validationResult } = require('express-validator');
 
 const { Usuario } = require('../models');
 
@@ -112,69 +112,194 @@ exports.findAll = async (req, res) => {
     }
     catch (err) {
         res.status(500).send({
-            message: err.message || "Ocurrio un error al obtener Usuarios."
+            message: err.message || "unexpected error has been occurred when fetching users."
         });
     }
 };
 
-exports.findOne = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const usuario = await Usuario.findByPk(id);
-        res.send(usuario);
-    }
-    catch (err) {
-        res.status(500).send({
-            message: err.message || `Ocurrio un error al obtener usuario con id ${id}`
-        });
-    }
-};
+exports.findOne = [
+    param('id')
+        .exists()
+        .withMessage('must be specified')
+        .custom(async (value) => {
+            const usuario = await Usuario.findByPk(value);
+            if (usuario === null) {
+                throw new Error('invalid user id');
+            }
+            return true;
+        }),
+    async (req, res) => {
+        const errors = validationResult(req); 
 
-exports.update = async (req, res) => {
-    const { id } = req.params;
-    const data  = req.body;
-    try {
-        const usuario = await Usuario.findByPk(id);
-        
-        usuario.nombre_usuario = data.nombre_usuario;
-        usuario.apellido = data.apellido;
-        usuario.correo_usuario = data.correo_usuario;
-        usuario.contrasena = data.contrasena;
-        usuario.num_telefono_usuario = data.num_telefono_usuario;
-        usuario.num_cedula = data.num_cedula;
-        usuario.estado_usuario = data.estado_usuario;
-        usuario.url_imagen_usuario = data.url_imagen_usuario;
-        
-        await usuario.save();
-        
-        res.send(usuario);
-    }
-    catch (err) {
-        res.status(500).send({
-            message: err.message || `Ocurrio un error al actualizar usuario con id ${id}`
-        });
-    }
-};
-
-exports.delete = async (req, res) => {
-    const { id } = req.params;
-    try {
-        const response = await Usuario.destroy({
-            where : { id_usuario : id }
-        });
-        if (response == 1) {
-            res.send({ status: true, message: "usuario fue eliminado" });
+        if (!errors.isEmpty()) {
+            res.status(422).json({ errors: errors.array() });
+            return;
         }
-        else {
-            res.send({ status: false, message: "usuario no fue eliminado" });
+        
+        const { id } = req.params;
+        try {
+            const usuario = await Usuario.findByPk(id);
+            res.send(usuario);
+        }
+        catch (err) {
+            res.status(500).send({
+                message: err.message || `unexpected error has been occurred when fetching user ${id}.`
+            });
         }
     }
-    catch (err) {
-        res.status(500).send({
-            message: err.message || `Ocurrio un error al eliminar usuario con id ${id}`
-        });
+];
+
+exports.update = [
+    param('id')
+        .exists()
+        .custom(async (value) => {
+            const usuario = await Usuario.findByPk(value);
+            if (!usuario) {
+                throw new Error('invalid user id');
+            }
+            return true;
+        }),
+    body('nombre_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .isLength({ min: 1, max: 255 })
+        .withMessage('must have length more than 0 and less than 256')
+        .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
+        .withMessage('must have only letters and could use a blank space as separator of two names'),
+    body('apellido')
+        .exists()
+        .withMessage('must be specified')
+        .isLength({ min: 1, max: 255 })
+        .withMessage('must have length more than 0 or less than 256')
+        .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
+        .withMessage('must have only letters and could use a blank space as separator of two names'),
+    body('correo_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .isEmail()
+        .withMessage('must be a valid email address')
+        .custom(async (value) => {
+            const usuario = await Usuario.findOne({ where: { correo_usuario: value } });
+            if (usuario) {
+                throw new Error('e-mail already in use');
+            }
+            return true;
+        }),
+    body('contrasena')
+        .exists()
+        .withMessage('must be specified')
+        .isLength({ min: 8 })
+        .withMessage('must be at least 8 chars long')
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/)
+        .withMessage('must have at least 1 lowercase alphabetical character, 1 uppercase alphabetical character, 1 numeric character and 1 special character'),
+    body('num_telefono_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
+        .withMessage('must be a valid phone number')
+        .custom(async (value) => {
+            const usuario = await Usuario.findOne({ where: { num_telefono_usuario: value } });
+            if (usuario) {
+                throw new Error('phone number already in use');
+            }
+            return true;
+        }),
+    body('num_cedula')
+        .exists()
+        .withMessage('must be specified')
+        .matches(/^[V|E|J|G]-?[0-9]{8}-?[0-9]?/)
+        .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number')
+        .custom(async (value) => {
+            const usuario = await Usuario.findOne({ where: { num_cedula: value } });
+            if (usuario) {
+                throw new Error('cedula or rif already in use');
+            }
+            return true;
+        }),
+    body('estado_usuario')
+        .exists()
+        .withMessage('must be specified')
+        .isIn(['habilitado', 'deshabilitado'])
+        .withMessage('must be a valid type'),
+    body('url_imagen_usuario')
+        .exists()
+        .withMessage('must be specified'),
+    body('fk_tipo_usuario')
+        .exists()
+        .withMessage('must be specified'),
+    async (req, res) => {
+        const errors = validationResult(req); 
+
+        if (!errors.isEmpty()) {
+            res.status(422).json({ errors: errors.array() });
+            return;
+        }
+        
+        const { id } = req.params;
+        const data  = req.body;
+        
+        try {
+            const usuario = await Usuario.findByPk(id);
+            
+            usuario.nombre_usuario = data.nombre_usuario;
+            usuario.apellido = data.apellido;
+            usuario.correo_usuario = data.correo_usuario;
+            usuario.contrasena = data.contrasena;
+            usuario.num_telefono_usuario = data.num_telefono_usuario;
+            usuario.num_cedula = data.num_cedula;
+            usuario.estado_usuario = data.estado_usuario;
+            usuario.url_imagen_usuario = data.url_imagen_usuario;
+            usuario.fk_tipo_usuario = data.fk_tipo_usuario;
+            
+            await usuario.save();
+            
+            res.send(usuario);
+        }
+        catch (err) {
+            res.status(500).send({
+                message: err.message || `unexpected error has been occurred when updating user ${id}`
+            });
+        }
     }
-};
+];
+
+exports.delete = [
+    param('id')
+        .exists()
+        .custom(async (value) => {
+            const usuario = await Usuario.findByPk(value);
+            if (!usuario) {
+                throw new Error('invalid user id');
+            }
+            return true;
+        }),
+    async (req, res) => {
+        const errors = validationResult(req); 
+
+        if (!errors.isEmpty()) {
+            res.status(422).json({ errors: errors.array() });
+            return;
+        }
+        
+        const { id } = req.params;
+        try {
+            const response = await Usuario.destroy({
+                where : { id_usuario : id }
+            });
+            if (response == 1) {
+                res.send({ status: true, message: "user has been deleted" });
+            }
+            else {
+                res.send({ status: false, message: "user has not been deleted" });
+            }
+        }
+        catch (err) {
+            res.status(500).send({
+                message: err.message || `unexpected error has been occurred when deleting user ${id}`
+            });
+        }
+    }
+];
 
 exports.deleteAll = async (req, res) => {
     try {
@@ -184,13 +309,13 @@ exports.deleteAll = async (req, res) => {
         }); 
         res.send({
             status: true,
-            message: `${numUsers} usuarios fueron eliminados`
+            message: `${numUsers} users has been deleted`
         })
     }
     catch (err) {
         res.status(500).send({
             status: false,
-            message: err.message || "Ocurrio un error al eliminar los usuarios"
+            message: err.message || "unexpected error has been occurred when deleting users"
         })
     }
 };
