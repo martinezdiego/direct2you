@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form, Input, Select, Button } from 'antd';
+import AñadirDireccionUSer from "./AñadirDireccionUser"
 const { Option } = Select;
 
 const formItemLayout = {
@@ -190,8 +191,8 @@ const FormRegister = () => {
       </Form.Item>
      
       <Form.Item>
-        <div style={{float:"left"}}>
-          <Button type="default" href="#Ir pagina añadir direccion">Agregar Direccion +</Button>
+        <div style={{float:"left", marginBottom:"2%"}}>
+          <AñadirDireccionUSer/>
         </div>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
