@@ -14,36 +14,26 @@ import '../../assets/css/Sidebar.css';
 const { SubMenu } = Menu;
 const {Sider} = Layout
 
-function Sidebar(props) {
-
+function SiderMenu (){
     const [mode, setMode] = React.useState('inline');
     const [theme, setTheme] = React.useState('light');
-
+  
     const changeMode = value => {
-        setMode(value ? 'vertical' : 'inline');
+      setMode(value ? 'vertical' : 'inline');
     };
-
+  
     const changeTheme = value => {
-        setTheme(value ? 'dark' : 'light');
+      setTheme(value ? 'dark' : 'light');
     };
-
+  
     return(
-        <>
-        <Sider
-            style={{
-                overflow: 'auto',
-                height: '100vh',
-                position: 'fixed',
-                left: 0,
-                background:'#fff'
-            }}
-        >            
+        <div>
             <Menu
-                style={{ width: 256, fontSize: '16px' }}
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1']}
-                mode={mode}
-                theme={theme}
+            style={{ width: 256, fontSize: '16px' }}
+            defaultSelectedKeys={['1']}
+            defaultOpenKeys={['sub1']}
+            mode={mode}
+            theme={theme}
 
             >
                 <Menu.Item key="1" icon={<DashboardOutlined />}>
@@ -78,10 +68,29 @@ function Sidebar(props) {
             <br />
             <Switch onChange={changeMode} /> Change Mode
             <Divider type="vertical" />
-            <Switch onChange={changeTheme} /> Change Style            
-        </Sider>
-        </>
-    );
+            <Switch onChange={changeTheme} /> Change Style 
+        </div>
+    );           
+}
+
+class Sidebar extends React.Component{
+    render(){
+        return(
+            <>
+            <Sider
+                style={{
+                    overflow: 'auto',
+                    height: '100vh',
+                    position: 'fixed',
+                    left: 0,
+                    background:'#fff'
+                }}
+            > 
+                <SiderMenu/>           
+            </Sider>
+            </>
+        )
+    };
 }
 
 export default Sidebar;
