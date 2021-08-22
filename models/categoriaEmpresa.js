@@ -19,7 +19,11 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     CategoriaEmpresa.associate = (models) => {
+        const { Empresa } = models;
         
+        CategoriaEmpresa.hasOne(Empresa, {
+            foreignKey: "fk_id_categoria_empresa"
+        });
     }
     
     return CategoriaEmpresa;

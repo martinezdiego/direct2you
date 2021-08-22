@@ -38,7 +38,11 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Empresa.associate = (models) => {
+        const { CategoriaEmpresa } = models;
         
+        Empresa.belongsTo(CategoriaEmpresa, {
+            foreignKey: "fk_id_categoria_empresa"
+        });
     }
     
     return Empresa;
