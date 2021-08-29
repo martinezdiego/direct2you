@@ -1,8 +1,10 @@
 const express = require('express');
 const path = require('path');
+const session = require('express-session');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const settings = require('./settings');
 
@@ -14,18 +16,29 @@ const tipoUsuario = require('./routes/tipoUsuario');
 const empresa = require('./routes/empresa');
 const categoriaEmpresa = require('./routes/categoriaEmpresa');
 
-const router = express.Router();
-
 // App config
 const app = express();
 
+const myStore = new SequelizeStore({
+    db: models.sequelize,
+});
+
+app.use(
+    session({
+        secret: "s3Cur3",
+        store: myStore,
+        resave: true,
+        saveUninitialized: true
+    })
+);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Database connection
-models.sequelize.sync();
+// models.sequelize.sync();
+myStore.sync();
 
 // Passport setup
 passport.use(new Strategy({
