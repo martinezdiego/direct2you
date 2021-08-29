@@ -86,40 +86,6 @@ app.use("/api/tipo_usuarios", tipoUsuario);
 app.use("/api/empresas", empresa);
 app.use("/api/categoria_empresas", categoriaEmpresa);
 
-const auth = require('./util/authentication');
-
-app.use("/home", auth.isAuthenticated, (req, res) => {
-    res.send({ message: "Welcome user" });
-});
-                                                                                                                                                                                                                                                                
-app.use('/login', (req, res) => {
-    res.sendFile(__dirname + '/login.html');
-});
-
-app.post('/submit',
-         
-         function(req, res, next) {
-            passport.authenticate('local', function(err, user, info) {
-                if (err) { return next(err); }
-                if (!user) { return res.redirect('/login'); }
-                req.logIn(user, function(err) {
-                    if (err) { return next(err); }
-                    return res.redirect('/home');
-                });
-            })(req, res, next);
-         }
-// passport.authenticate('local', { 
-//     successRedirect: '/home', 
-//     failureRedirect: '/login', 
-//     failureFlash: true })
-);
-
-app.get('/logout',
-  function(req, res){
-    req.logout();
-    res.redirect('/login');
-});
-
 app.use("/", (req, res) => {
     res.send({ message: "Hello from Express" });
 });
