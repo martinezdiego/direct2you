@@ -1,6 +1,9 @@
 const { body, param, validationResult } = require('express-validator');
+const passport = require('passport');
 
 const { Usuario } = require('../models');
+
+const auth = require('../util/authentication');
 
 exports.create = [
     body('nombre_usuario')
@@ -319,3 +322,39 @@ exports.deleteAll = async (req, res) => {
         })
     }
 };
+
+exports.login = (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) { 
+            return next(err); 
+        }
+        if (!user) { 
+            res.status(422).send({ 
+                status: false, 
+                message: info.message 
+            });
+            return;
+        }
+        req.logIn(user, (err) => {
+            if (err) { 
+                return next(err); 
+                
+            }
+            res.status(200).send({ 
+                status: true, 
+                message: "user has been logged in" 
+            });
+        });
+    })(req, res, next);
+};
+
+exports.logout = [
+    auth.isAuthenticated,
+    (req, res) => {
+        req.logOut();
+        res.status(200).send({
+            status: true,
+            message: "user has been logged out"
+        });
+    }
+];
