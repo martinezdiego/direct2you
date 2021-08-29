@@ -1,0 +1,23 @@
+.ingresar-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ingresar-form {
+    border-radius: 5px;
+    max-width: 380px;
+    padding: 1.5rem;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.ingresar-form-forgot {
+    float: right;
+}
+
+.ingresar-form-submit-button {
+  width: 100%;
+  margin-bottom: 10px;
+}
