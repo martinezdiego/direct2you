@@ -17,6 +17,7 @@ const empresa = require('./routes/empresa');
 const categoriaEmpresa = require('./routes/categoriaEmpresa');
 const ciudad = require('./routes/ciudad');
 const zonaResidencial = require('./routes/zonaResidencial');
+const ubicacion = require('./routes/ubicacion');
 
 // App config
 const app = express();
@@ -89,6 +90,7 @@ app.use("/api/empresas", empresa);
 app.use("/api/categoria_empresas", categoriaEmpresa);
 app.use("/api/ciudades", ciudad);
 app.use("/api/zona_residenciales", zonaResidencial);
+app.use("/api/ubicaciones", ubicacion);
 
 app.use("/", (req, res) => {
     res.send({ message: "Hello from Express" });
