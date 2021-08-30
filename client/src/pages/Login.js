@@ -3,21 +3,21 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import Navbar from '../components/shared/Navbar';
 import NavFooter from '../components/shared/footer';
-import ContentHome from './Home/ContentHome';
+import ContentLogin from './Login/ContentLogin';
 
 
-class Home extends PureComponent {
+class Login extends PureComponent {
   render(){
     return (
     <>
         <Layout>
-            <Navbar isLogged={false}/>
-            <ContentHome />
-            <NavFooter />
+          <Navbar isLogged={false}/>
+          <ContentLogin />
+          <NavFooter />
         </Layout>
     </>
     );
   }
 }
 
-export default Home;
+export default Login;

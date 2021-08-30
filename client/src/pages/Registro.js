@@ -1,22 +1,23 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import Navbar from '../components/shared/Navbar';
 import NavFooter from '../components/shared/footer';
-import ContentRegistro from './Registro/ContentRegistro';
+import ContentRegistro from './Registro/ContentRegistro.js';
 
 
-function Registro(props) {
-
-  return (
-   <>
-      <Layout>
-        <Navbar isLogged={false}/>
-        <ContentRegistro />
-        <NavFooter />
-      </Layout>
-   </>
-  );
+class Registro extends PureComponent {
+  render(){
+    return (
+    <>
+        <Layout>
+          <Navbar isLogged={false}/>
+          <ContentRegistro />
+          <NavFooter />
+        </Layout>
+    </>
+    );
+  }
 }
 
 export default Registro;

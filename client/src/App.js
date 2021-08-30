@@ -5,7 +5,7 @@ import { withRouter } from 'react-router';
 
 // import Ingresar from './pages/Ingresar';
 import Registro from './pages/Registro';
-import login from './pages/login'
+import login from './pages/Login'
 
 import 'antd/dist/antd.css';
 import './assets/css/index.css';

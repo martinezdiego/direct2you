@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Menu, Switch, Divider, Layout } from 'antd';
 import {
   DashboardOutlined,
@@ -73,7 +73,7 @@ function SiderMenu (){
     );           
 }
 
-class Sidebar extends React.Component{
+class Sidebar extends PureComponent{
     render(){
         return(
             <>

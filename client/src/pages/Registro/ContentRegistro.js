@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import { Layout, Row, Col,Badge,Divider } from 'antd';
 import { FileDoneOutlined, ShoppingCartOutlined, DollarOutlined, LikeOutlined } from '@ant-design/icons';
 import RegistrationForm from './ContentRegistro/FormRegister'
@@ -8,7 +8,7 @@ import '../../assets/css/Navfooter.css';
 
 const { Content } = Layout;
 
-class ContentRegistro extends React.Component {
+class ContentRegistro extends PureComponent {
   render(){
     return(
       <Content style={{ padding: '0 50px', marginTop: 64 }}>
@@ -72,8 +72,8 @@ class ContentRegistro extends React.Component {
           </div>
         </div>
       </Content>
-    )
-  };
+    );
+  }
 }
 
 export default ContentRegistro;
