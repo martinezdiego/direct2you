@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, Input, Select, Button } from 'antd';
-import FormAñadirDireccion from './FormAñadirDireccion';
+import FormAñadirDireccion from './FormRegisterEmpresa/FormAñadirDireccion';
 const { Option } = Select;
 
 const formItemLayout = {

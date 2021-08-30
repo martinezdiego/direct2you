@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Row, Col,Badge,Divider } from 'antd';
 import { FileDoneOutlined, ShoppingCartOutlined, DollarOutlined, LikeOutlined } from '@ant-design/icons';
-import RegistrationForm from './FormRegister'
+import RegistrationForm from './ContentRegistro/FormRegister'
 import 'antd/dist/antd.css';
 import '../../assets/css/Registro.css';
 import '../../assets/css/Navfooter.css';

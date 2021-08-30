@@ -3,7 +3,7 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import Navbar from '../components/shared/Navbar';
 import NavFooter from '../components/shared/footer';
-import ContentRegistro from '../components/shared/ContentRegistro';
+import ContentRegistro from './Registro/ContentRegistro';
 
 
 function Registro(props) {
