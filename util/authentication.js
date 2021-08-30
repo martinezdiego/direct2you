@@ -4,7 +4,21 @@ module.exports = {
             next();
         }
         else {
-            res.redirect('/login');
+            res.status(422).send({ 
+                status: false,
+                message: 'user must log in'
+            });
+        }
+    },
+    isNotAuthenticated: function(req, res, next) {
+        if(!req.isAuthenticated()) {
+            next();
+        }
+        else {
+            res.status(422).send({ 
+                status: false,
+                message: 'user is already logged in'
+            });
         }
     }
 }; 
