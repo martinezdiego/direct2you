@@ -15,6 +15,7 @@ const usuario = require('./routes/usuario');
 const tipoUsuario = require('./routes/tipoUsuario');
 const empresa = require('./routes/empresa');
 const categoriaEmpresa = require('./routes/categoriaEmpresa');
+const ciudad = require('./routes/ciudad');
 
 // App config
 const app = express();
@@ -85,6 +86,7 @@ app.use("/api/usuarios", usuario);
 app.use("/api/tipo_usuarios", tipoUsuario);
 app.use("/api/empresas", empresa);
 app.use("/api/categoria_empresas", categoriaEmpresa);
+app.use("/api/ciudades", ciudad);
 
 app.use("/", (req, res) => {
     res.send({ message: "Hello from Express" });
