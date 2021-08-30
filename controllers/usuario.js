@@ -323,30 +323,33 @@ exports.deleteAll = async (req, res) => {
     }
 };
 
-exports.login = (req, res, next) => {
-    passport.authenticate('local', (err, user, info) => {
-        if (err) { 
-            return next(err); 
-        }
-        if (!user) { 
-            res.status(422).send({ 
-                status: false, 
-                message: info.message 
-            });
-            return;
-        }
-        req.logIn(user, (err) => {
+exports.login = [
+    auth.isNotAuthenticated,
+    (req, res, next) => {
+        passport.authenticate('local', (err, user, info) => {
             if (err) { 
                 return next(err); 
-                
             }
-            res.status(200).send({ 
-                status: true, 
-                message: "user has been logged in" 
+            if (!user) { 
+                res.status(422).send({ 
+                    status: false, 
+                    message: info.message 
+                });
+                return;
+            }
+            req.logIn(user, (err) => {
+                if (err) { 
+                    return next(err); 
+                    
+                }
+                res.status(200).send({ 
+                    status: true, 
+                    message: "user has been logged in" 
+                });
             });
-        });
-    })(req, res, next);
-};
+        })(req, res, next);
+    }
+];
 
 exports.logout = [
     auth.isAuthenticated,
