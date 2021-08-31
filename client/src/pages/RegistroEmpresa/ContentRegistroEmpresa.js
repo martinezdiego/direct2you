@@ -1,14 +1,14 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Layout, Row, Col,Divider } from 'antd';
 import 'antd/dist/antd.css';
 import {CheckSquareFilled, FormOutlined, ContainerOutlined, CarFilled, LikeFilled} from "@ant-design/icons";
-import LastHeader from './LastHeader';
-import FormRegisterEmpresa from './FormRegisterEmpresa'
+import LastHeader from '../../components/shared/LastHeader';
+import FormRegisterEmpresa from './ContentRegistroEmpresa/FormRegisterEmpresa'
 import '../../assets/css/Registro.css';
 
 const { Content } = Layout;
 
-class ContentRegistroEmpresa extends React.Component {
+class ContentRegistroEmpresa extends PureComponent {
 	render(){
 		return(
 			<Layout>

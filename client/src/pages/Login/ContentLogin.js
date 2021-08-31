@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Form, Input, Button, Checkbox, Layout } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../../assets/css/form.css';
@@ -7,7 +7,7 @@ import '../../assets/css/Navfooter.css';
 
 const { Content } = Layout;
 
-class ContentLogin extends React.Component {
+class ContentLogin extends PureComponent {
   render(){
     const onFinish = (values) => {
       console.log('Received values of form: ', values);

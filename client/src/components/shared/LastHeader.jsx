@@ -1,7 +1,7 @@
 import React from 'react';
-import ContentLastHRegisterEmpresa from "./ContentLastHRegisterEmpresa"
-import ContentLastHDefault from "./ContentLastHDefault"
-
+import ContentLastHRegisterEmpresa from "./LastHeader/ContentLastHRegisterEmpresa"
+import ContentLastHDefault from "./LastHeader/ContentLastHDefault"
+import ContentLastHeaderHome from './LastHeader/ContentLastHeaderHome'
 class LastHeader extends React.Component{	
 
   render(){
@@ -11,7 +11,9 @@ class LastHeader extends React.Component{
 		}
 		else if (prop === 'default'){
 			return (<ContentLastHDefault/>);
+		}else if (prop === 'home'){
+			return (<ContentLastHeaderHome />)
 		}
-	}
+	};
 }
 export default LastHeader;

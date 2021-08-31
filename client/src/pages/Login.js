@@ -3,16 +3,16 @@ import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import Navbar from '../components/shared/Navbar';
 import NavFooter from '../components/shared/footer';
-import ContentRegistro from './Registro/ContentRegistro.js';
+import ContentLogin from './Login/ContentLogin';
 
 
-class Registro extends PureComponent {
+class Login extends PureComponent {
   render(){
     return (
     <>
         <Layout>
           <Navbar isLogged={false}/>
-          <ContentRegistro />
+          <ContentLogin />
           <NavFooter />
         </Layout>
     </>
@@ -20,4 +20,4 @@ class Registro extends PureComponent {
   }
 }
 
-export default Registro;
+export default Login;

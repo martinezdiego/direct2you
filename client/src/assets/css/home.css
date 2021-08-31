@@ -1,0 +1,103 @@
+.containerform1{
+    padding: 0px 4%;
+    margin-bottom: 32px;
+}
+.h1-text{
+    font-size: 30px;
+    width: 100%;
+    text-align:center;
+    color: black;
+    margin: 16px auto;
+    font-style: italic;
+    font-weight: bold;
+}
+.h2-text{
+    margin: auto;
+    margin-bottom: 32px;
+    font-family:Lato;
+    font-size: 18px;
+    line-height: 1.38;
+    text-align: center;
+    color: black;
+}
+.title-form{
+    font-family: Muli;
+    font-size: 16px;
+    font-weight: 800;
+    text-align: left;
+    margin-bottom: 12px;
+    color: black;
+}
+.form{
+    background: #FDFEFE;
+    background: rgba(255,255,255,0.3);
+    border-radius: 6px;
+    padding: 12px;
+    margin: 12px 0;
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+}
+
+.item-form{
+    font-size: 32px;
+    color: #fff;
+}
+
+.form-button{
+    border-radius: 50px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 800px;
+    color: white;
+    padding: 7px 40px;
+    line-height: normal;
+    font-family: Muli;
+    background:rgb(187, 53, 53);
+    background-position: center;
+}
+
+@media screen and (min-width:900px) {
+    .containerMask{
+        background-color: rgba(0,0,0,0.6);
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+    
+    }
+    .containerImage{
+        /*width: 100%;*/
+        height: 95vh;
+        background-image: url('../img/headerdelivery.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        background-position: center;
+        -webkit-box-pack: center;
+        -webkit-box-align: center;
+    }
+    .containerform1{
+        width: 100%;
+        padding: 0;
+    }
+    .containerform{
+        width: 70%;
+        margin: auto;
+    }
+    .h1-text{
+        font-size: 40px;
+        color: #fff;
+    }
+    .h2-text{
+        color: #fff;
+    }
+    .title-form{
+        color: #fff;
+    }
+}

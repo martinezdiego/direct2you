@@ -1,7 +1,7 @@
 import React from 'react';
 import {Steps, Layout} from 'antd'
 import { FileDoneOutlined, CheckOutlined, LikeOutlined } from '@ant-design/icons';
-import '../../assets/css/LastHeader.css';
+import '../../../assets/css/LastHeader.css';
 
 const {Content} = Layout;
 const { Step } = Steps;
