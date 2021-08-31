@@ -57,6 +57,31 @@
     background-position: center;
 }
 
+.title-step{
+    margin-top: 20px;
+    color:#100423;
+    font-weight: 600;
+    line-height: 1.45;
+}
+.p-label{
+    font-family: Lato;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    margin-top: 0;
+    color:#100423
+}
+@media screen and (max-width:575px){
+    .title-step{
+        margin-top: 3px;
+    }
+    .p-label{
+        font-size: 10px;
+    }
+}
 @media screen and (min-width:900px) {
     .containerMask{
         background-color: rgba(0,0,0,0.6);
