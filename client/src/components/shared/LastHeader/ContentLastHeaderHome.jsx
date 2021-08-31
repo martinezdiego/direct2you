@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import {Layout} from 'antd'
-import '../../../assets/css/home.css';
 import FormHome from './ContentLastHeaderHome/FormHome'
 const {Content} = Layout;
 
-class ContentLastHome extends React.Component{
+class ContentLastHome extends PureComponent{
 
 	render(){
 			return (

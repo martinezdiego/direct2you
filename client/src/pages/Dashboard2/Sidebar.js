@@ -9,7 +9,6 @@ import {
   ShopOutlined,
   CarOutlined,
 } from '@ant-design/icons';
-import '../../assets/css/Sidebar.css';
 
 const { SubMenu } = Menu;
 const {Sider} = Layout

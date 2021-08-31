@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Layout, Button, Space,Menu, Dropdown } from 'antd';
 import { BellOutlined, MenuOutlined, UserOutlined, DownOutlined, GlobalOutlined } from '@ant-design/icons';
-import '../../assets/css/Navbar.css';
 import userpic from '../../assets/img/user-icon-image-13.jpg';
 
 const { Header } = Layout;

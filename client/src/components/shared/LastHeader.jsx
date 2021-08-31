@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import ContentLastHRegisterEmpresa from "./LastHeader/ContentLastHRegisterEmpresa"
 import ContentLastHDefault from "./LastHeader/ContentLastHDefault"
 import ContentLastHeaderHome from './LastHeader/ContentLastHeaderHome'
-class LastHeader extends React.Component{	
+
+class LastHeader extends PureComponent{	
 
   render(){
 		const prop = this.props.head;

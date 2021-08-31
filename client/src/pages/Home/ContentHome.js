@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react';
 import {Layout, Col, Row, Divider, Steps} from 'antd'
 import { UserAddOutlined, SmileOutlined, LoadingOutlined, SearchOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import LastHeader from '../../components/shared/LastHeader'
-import '../../assets/css/home.css';
 
 const { Step } = Steps;
 const {Content} = Layout
