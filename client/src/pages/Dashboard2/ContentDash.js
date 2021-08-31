@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Layout } from 'antd';
 import '../../assets/css/Navfooter.css';
 
 const { Content } = Layout;
 
-class ContentDash extends React.Component {
+class ContentDash extends PureComponent {
   render(){
     return(
       <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>

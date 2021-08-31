@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Layout, Button, Space,Menu, Dropdown } from 'antd';
 import { BellOutlined, MenuOutlined, HomeOutlined,UserOutlined } from '@ant-design/icons';
 import '../../assets/css/Navbar.css';
@@ -6,7 +6,7 @@ import userpic from '../../assets/img/user-icon-image-13.jpg';
 
 const { Header } = Layout;
 
-class Navbar extends React.Component {
+class Navbar extends PureComponent {
 
     constructor(props) {
         super(props);
@@ -34,10 +34,10 @@ class Navbar extends React.Component {
         const menu = (
             <Menu >
                 <Menu.Item key="1" icon={<HomeOutlined />}>
-                    <a href='#IR A REGISTER PAGE'>Afiliarme</a>
+                    <a href='/registrarse'>Afiliarme</a>
                 </Menu.Item>
                 <Menu.Item key="2" icon={<UserOutlined />}>
-                <a href='#IR A LOGIN PAGE'>Ingresar</a>
+                <a href='/ingresar'>Ingresar</a>
                 </Menu.Item>
             </Menu>
         );   
@@ -78,10 +78,10 @@ class Navbar extends React.Component {
                     </ul>
                     <ul className="nav-ul-right">
                         <Space>
-                            <Button href="#registro" type="default" icon={<HomeOutlined />}>
+                            <Button href="/registrarse" type="default" icon={<HomeOutlined />}>
                                 Afiliarme
                             </Button>
-                            <Button href="#login" type="default" >
+                            <Button href="/ingresar" type="default" >
                                 Ingresar
                             </Button>
                         </Space>
