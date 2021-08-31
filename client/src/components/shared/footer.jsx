@@ -1,13 +1,11 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { Layout, Row, Col, Image,Button, Space } from 'antd';
-import 'antd/dist/antd.css';
 import logo from '../../assets/img/logoDirect2You.jpg';
 import { FacebookOutlined,InstagramOutlined,WhatsAppOutlined } from '@ant-design/icons';
-import '../../assets/css/Navfooter.css';
 
 const { Footer } = Layout;
 
-class NavFooter extends React.Component {
+class NavFooter extends PureComponent {
     render(){
         return(
             <Footer style={{background:"#ffffff"}}>

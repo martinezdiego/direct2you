@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import Navbar from '../components/shared/Navbar';
 import Sidebar from './Dashboard2/Sidebar';

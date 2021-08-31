@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Layout } from 'antd';
-import '../../assets/css/Navfooter.css';
 
 const { Content } = Layout;
 

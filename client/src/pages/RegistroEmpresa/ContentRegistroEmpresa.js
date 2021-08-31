@@ -1,10 +1,8 @@
 import React, { PureComponent } from 'react';
 import { Layout, Row, Col,Divider } from 'antd';
-import 'antd/dist/antd.css';
 import {CheckSquareFilled, FormOutlined, ContainerOutlined, CarFilled, LikeFilled} from "@ant-design/icons";
 import LastHeader from '../../components/shared/LastHeader';
 import FormRegisterEmpresa from './ContentRegistroEmpresa/FormRegisterEmpresa'
-import '../../assets/css/Registro.css';
 
 const { Content } = Layout;
 

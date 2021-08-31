@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import {Layout} from 'antd'
 
 const {Content} = Layout;
 
-class ContentLastDefault extends React.Component{
+class ContentLastDefault extends PureComponent{
 
 	render(){
 			return (

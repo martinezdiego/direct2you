@@ -1,9 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Form, Input, Button, Checkbox, Layout } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import '../../assets/css/form.css';
-import 'antd/dist/antd.css';
-import '../../assets/css/Navfooter.css';
 
 const { Content } = Layout;
 

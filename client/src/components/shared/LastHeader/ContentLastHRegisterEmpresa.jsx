@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import {Steps, Layout} from 'antd'
 import { FileDoneOutlined, CheckOutlined, LikeOutlined } from '@ant-design/icons';
-import '../../../assets/css/LastHeader.css';
 
 const {Content} = Layout;
 const { Step } = Steps;
 
-class ContentLastRegisterEmpresa extends React.Component{
+class ContentLastRegisterEmpresa extends PureComponent{
 
 	render(){
 			return (
