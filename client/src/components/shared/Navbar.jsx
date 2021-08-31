@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import { Layout, Button, Space,Menu, Dropdown } from 'antd';
-import { BellOutlined, MenuOutlined, HomeOutlined,UserOutlined } from '@ant-design/icons';
+import { BellOutlined, MenuOutlined, UserOutlined, DownOutlined, GlobalOutlined } from '@ant-design/icons';
 import '../../assets/css/Navbar.css';
 import userpic from '../../assets/img/user-icon-image-13.jpg';
 
 const { Header } = Layout;
+const {SubMenu} = Menu;
 
 class Navbar extends PureComponent {
 
@@ -19,28 +20,43 @@ class Navbar extends PureComponent {
     }
     
     resize() {
-        let currentHideNav = (window.innerWidth <= 445);
+        let currentHideNav = (window.innerWidth <= 550);
         if (currentHideNav !== this.state.hideNav) {
             this.setState({hideNav: currentHideNav});
         }
     }
-    
+
     componentWillUnmount() {
         window.removeEventListener("resize", this.resize.bind(this));
     }
-
+    
     render(){        
         const isLogged = this.props.isLogged;
         const menu = (
             <Menu >
-                <Menu.Item key="1" icon={<HomeOutlined />}>
-                    <a href='/registrarse'>Afiliarme</a>
-                </Menu.Item>
+                <SubMenu title="Afiliarme">
+                    <Menu.Item key="1" icon={<UserOutlined />}>
+                        <a href="/registrarse">Afiliame como usuario</a>
+                    </Menu.Item>
+                    <Menu.Item key="2" icon={<GlobalOutlined />}>
+                        <a href="/registrar-empresa">Afiliame como empresa</a>
+                    </Menu.Item>
+                </SubMenu>
                 <Menu.Item key="2" icon={<UserOutlined />}>
                 <a href='/ingresar'>Ingresar</a>
                 </Menu.Item>
             </Menu>
-        );   
+        );
+        const menu_registro = (
+            <Menu >
+              <Menu.Item key="1" icon={<UserOutlined />}>
+                <a href="/registrarse">Afiliame como usuario</a>
+              </Menu.Item>
+              <Menu.Item key="2" icon={<GlobalOutlined />}>
+                <a href="/registrar-empresa">Afiliame como empresa</a>
+              </Menu.Item>
+            </Menu>
+        );
     
         if (isLogged){
             return(
@@ -78,9 +94,10 @@ class Navbar extends PureComponent {
                     </ul>
                     <ul className="nav-ul-right">
                         <Space>
-                            <Button href="/registrarse" type="default" icon={<HomeOutlined />}>
+                            <Dropdown.Button overlay={menu_registro} placement="bottomCenter" icon={<DownOutlined />} >
                                 Afiliarme
-                            </Button>
+                            </Dropdown.Button>
+
                             <Button href="/ingresar" type="default" >
                                 Ingresar
                             </Button>
