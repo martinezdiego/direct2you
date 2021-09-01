@@ -18,6 +18,10 @@ models.CategoriaEmpresa = require('./categoriaEmpresa')(sequelize, DataTypes);
 models.Ubicacion = require('./ubicacion')(sequelize, DataTypes);
 models.Ciudad = require('./ciudad')(sequelize, DataTypes);
 models.ZonaResidencial = require('./zonaResidencial')(sequelize, DataTypes);
+models.Producto = require('./producto')(sequelize, DataTypes);
+models.CategoriaProducto = require('./categoriaProducto')(sequelize, DataTypes);
+models.MedioTransporte = require('./medioTransporte')(sequelize, DataTypes);
+models.TipoMedioTransporte = require('./tipoMedioTransporte')(sequelize, DataTypes);
 
 models.TipoUsuario.associate(models);
 models.Usuario.associate(models);
@@ -26,6 +30,10 @@ models.CategoriaEmpresa.associate(models);
 models.Ubicacion.associate(models);
 models.Ciudad.associate(models);
 models.ZonaResidencial.associate(models);
+models.Producto.associate(models);
+models.CategoriaProducto.associate(models);
+models.MedioTransporte.associate(models);
+models.TipoMedioTransporte.associate(models);
 
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;
