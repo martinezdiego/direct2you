@@ -18,6 +18,10 @@ const categoriaEmpresa = require('./routes/categoriaEmpresa');
 const ciudad = require('./routes/ciudad');
 const zonaResidencial = require('./routes/zonaResidencial');
 const ubicacion = require('./routes/ubicacion');
+const producto = require('./routes/producto');
+const categoriaProducto = require('./routes/categoriaProducto');
+const medioTransporte = require('./routes/medioTransporte');
+const tipoMedioTransporte = require('./routes/tipoMedioTransporte');
 
 // App config
 const app = express();
@@ -83,7 +87,7 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-// Routes
+//Routes
 app.use("/api/usuarios", usuario);
 app.use("/api/tipo_usuarios", tipoUsuario);
 app.use("/api/empresas", empresa);
@@ -91,6 +95,10 @@ app.use("/api/categoria_empresas", categoriaEmpresa);
 app.use("/api/ciudades", ciudad);
 app.use("/api/zona_residenciales", zonaResidencial);
 app.use("/api/ubicaciones", ubicacion);
+app.use("/api/productos", producto);
+app.use("/api/categoria_productos", categoriaProducto);
+app.use("/api/medios_transporte", medioTransporte);
+app.use("/api/tipos_medio_transporte", tipoMedioTransporte)
 
 app.use("/", (req, res) => {
     res.send({ message: "Hello from Express" });
