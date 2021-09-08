@@ -63,7 +63,7 @@ class ContentLogin extends PureComponent {
                 <Form.Item >
                   ¿Aun no tienes una cuenta? | <a href="#ir pagina de registro">Registrate Ahora!</a>
                   <br/>
-                  <a href="#Ir pagina recuperar contra">¿Olvidaste la contraseña?</a>
+                  <a href="/forgot">¿Olvidaste la contraseña?</a>
                 </Form.Item>
               </div>
           </Form.Item>
