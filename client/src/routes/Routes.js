@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 //Components
 import home from '../pages/Home'
+import forgot from '../pages/Forgot'
 
 function Routes() {
 
