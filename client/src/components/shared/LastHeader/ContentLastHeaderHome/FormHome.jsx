@@ -1,8 +1,6 @@
 import React from 'react'
-import { Form, Input, Button, Space, Select } from 'antd';
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import { Form, Button, Select } from 'antd';
 
-const { Option } = Select;
 const ciudades = [
     { label: 'Merida', value: 'Merida' },
     { label: 'Caracas', value: 'Caracas' },

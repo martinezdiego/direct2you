@@ -1,7 +1,5 @@
 import React, { PureComponent } from 'react';
-import {Layout} from 'antd'
 import FormHome from './ContentLastHeaderHome/FormHome'
-const {Content} = Layout;
 
 class ContentLastHome extends PureComponent{
 
