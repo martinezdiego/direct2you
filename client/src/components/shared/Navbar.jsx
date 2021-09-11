@@ -57,7 +57,34 @@ class Navbar extends PureComponent {
             </Menu>
         );
     
-        if (isLogged){
+        if (this.state.hideNav){
+            if (isLogged){
+                return(
+                    <Header className="navbar">
+                        <ul className="nav-ul-left">
+                            <li>
+                                <li><MenuOutlined className="menu-icon"/></li>
+                            </li>
+                            <li className="nav-title">Direct2You</li>
+                        </ul>
+                    </Header>
+                )
+            }else{
+                return(
+                    <Header className="navbar">
+                        <ul className="nav-ul-left">
+                            <li>
+                                <Dropdown overlay={menu}>
+                                    <li><MenuOutlined className="menu-icon"/></li>
+                                </Dropdown>
+                            </li>
+
+                            <li className="nav-title">Direct2You</li>
+                        </ul>
+                    </Header>
+                )
+            }
+        }else if (isLogged){
             return(
                 <Header className="navbar">
                     <ul className="nav-ul-left">
@@ -67,20 +94,6 @@ class Navbar extends PureComponent {
                     <ul className="nav-ul-right">
                         <li><BellOutlined /></li>
                         <li><img src={userpic} className="nav-user-img" alt=''></img></li>
-                    </ul>
-                </Header>
-            )
-        }else if (this.state.hideNav){
-            return(
-                <Header className="navbar">
-                    <ul className="nav-ul-left">
-                        <li>
-                            <Dropdown overlay={menu}>
-                                <li><MenuOutlined className="menu-icon"/></li>
-                            </Dropdown>
-                        </li>
-
-                        <li className="nav-title">Direct2You</li>
                     </ul>
                 </Header>
             )
