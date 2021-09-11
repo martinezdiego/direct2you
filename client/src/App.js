@@ -10,7 +10,7 @@ import RegistroCompany from './pages/RegistroEmpresa';
 import home from './pages/Home';
 import dashboard from './pages/Dashboard2';
 import forgot from './pages/Forgot';
-
+import PerfilUser from './pages/PerfilUser'
 import 'antd/dist/antd.css';
 import './assets/css/index.css';
 import { OmitProps } from 'antd/lib/transfer/ListBody';
@@ -35,6 +35,7 @@ class App extends PureComponent
                     <Route path="/home" component={home} />
                     <Route path="/dashboard" component={dashboard} />
                     <Route path="/forgot" component={forgot}/>
+                    <Route path="/perfil-user" component={PerfilUser}/>
                 </Switch>
             </Layout>
         );
