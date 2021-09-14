@@ -22,6 +22,10 @@ const producto = require('./routes/producto');
 const categoriaProducto = require('./routes/categoriaProducto');
 const medioTransporte = require('./routes/medioTransporte');
 const tipoMedioTransporte = require('./routes/tipoMedioTransporte');
+const metodoPago = require('./routes/metodoPago');
+const pago = require('./routes/pago');
+const pedido = require('./routes/pedido');
+const reclamo = require('./routes/reclamo');
 
 // App config
 const app = express();
@@ -98,7 +102,11 @@ app.use("/api/ubicaciones", ubicacion);
 app.use("/api/productos", producto);
 app.use("/api/categoria_productos", categoriaProducto);
 app.use("/api/medios_transporte", medioTransporte);
-app.use("/api/tipos_medio_transporte", tipoMedioTransporte)
+app.use("/api/tipos_medio_transporte", tipoMedioTransporte);
+app.use("/api/metodos_pago", metodoPago);
+app.use("/api/pagos", pago);
+app.use("/api/pedidos", pedido);
+app.use("/api/reclamos", reclamo);
 
 app.use("/", (req, res) => {
     res.send({ message: "Hello from Express" });

@@ -38,13 +38,16 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Empresa.associate = (models) => {
-        const { CategoriaEmpresa, Ubicacion } = models;
+        const { CategoriaEmpresa, Ubicacion, Pedido } = models;
         
         Empresa.belongsTo(CategoriaEmpresa, {
             foreignKey: "fk_id_categoria_empresa"
         });
         Empresa.belongsTo(Ubicacion, {
             foreignKey: "fk_id_ubicacion"
+        });
+        Empresa.hasMany(Pedido, {
+            foreignKey: 'fk_id_empresa'
         });
     }
     

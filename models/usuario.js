@@ -46,10 +46,16 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Usuario.associate = (models) => {
-        const { TipoUsuario } = models;
+        const { TipoUsuario, Pedido, Reclamo } = models;
         
         Usuario.belongsTo(TipoUsuario, {
             foreignKey: "fk_tipo_usuario"
+        });
+        Usuario.hasMany(Pedido, {
+            foreignKey: 'fk_id_usuario'
+        });
+        Usuario.hasMany(Reclamo, {
+            foreignKey: 'fk_id_usuario'
         });
     }
     
