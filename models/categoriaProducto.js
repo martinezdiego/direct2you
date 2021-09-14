@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     CategoriaProducto.associate = (models) => {
         const { Producto } = models;
 
-        CategoriaProducto.hasOne(Producto, {
+        CategoriaProducto.hasMany(Producto, {
             foreignKey: "fk_id_categoria_producto"
         });
     }

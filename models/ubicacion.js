@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Ubicacion.associate = (models) => {
-        const { Ciudad, ZonaResidencial, Empresa } = models;
+        const { Ciudad, ZonaResidencial, Empresa, Pedido } = models;
         
         Ubicacion.belongsTo(Ciudad, {
             foreignKey: 'fk_id_ciudad'
@@ -44,6 +44,9 @@ module.exports = (sequelize, DataTypes) => {
         });
         Ubicacion.hasOne(Empresa, {
             foreignKey: "fk_id_ubicacion"
+        });
+        Ubicacion.hasMany(Pedido, {
+            foreignKey: 'fk_id_ubicacion'
         });
     }
     
