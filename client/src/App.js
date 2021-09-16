@@ -11,6 +11,8 @@ import home from './pages/Home';
 import dashboard from './pages/Dashboard2';
 import forgot from './pages/Forgot';
 import PerfilUser from './pages/PerfilUser'
+import AddPedido from './pages/RegistrarPedido'
+
 import 'antd/dist/antd.css';
 import './assets/css/index.css';
 import { OmitProps } from 'antd/lib/transfer/ListBody';
@@ -36,6 +38,7 @@ class App extends PureComponent
                     <Route path="/dashboard" component={dashboard} />
                     <Route path="/forgot" component={forgot}/>
                     <Route path="/perfil-user" component={PerfilUser}/>
+                    <Route path="/Add-pedido" component={AddPedido} />
                 </Switch>
             </Layout>
         );
