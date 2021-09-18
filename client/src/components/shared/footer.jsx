@@ -8,7 +8,7 @@ const { Footer } = Layout;
 class NavFooter extends PureComponent {
     render(){
         return(
-            <Footer style={{background:"#ffffff"}}>
+            <Footer style={{background:"#ffffff",width:'100%'}}>
                 <div className="Container">
                     <Row className="Row">
                         <Col className="Column" >
