@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Pedido.associate = (models) => {
-        const { Empresa, Pago, Usuario, MedioTransporte, Ubicacion, Reclamo } = models;
+        const { Empresa, Pago, Usuario, MedioTransporte, Ubicacion, Reclamo, Producto, ProductoPedido } = models;
 
         Pedido.belongsTo(Empresa, {
             foreignKey: "fk_id_empresa"
@@ -49,6 +49,10 @@ module.exports = (sequelize, DataTypes) => {
         });
         Pedido.hasOne(Reclamo, {
             foreignKey: "fk_id_pedido"
+        });
+        Pedido.belongsToMany(Producto, {
+            through: ProductoPedido,
+            foreignKey: 'fk_id_pedido'
         });
     }
 
