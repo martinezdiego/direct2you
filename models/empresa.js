@@ -38,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     Empresa.associate = (models) => {
-        const { CategoriaEmpresa, Ubicacion, Pedido } = models;
+        const { CategoriaEmpresa, Ubicacion, Pedido, MetodoPago, MetodoDePagoEmpresa } = models;
         
         Empresa.belongsTo(CategoriaEmpresa, {
             foreignKey: "fk_id_categoria_empresa"
@@ -47,6 +47,10 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: "fk_id_ubicacion"
         });
         Empresa.hasMany(Pedido, {
+            foreignKey: 'fk_id_empresa'
+        });
+        Empresa.belongsToMany(MetodoPago, {
+            through: MetodoDePagoEmpresa,
             foreignKey: 'fk_id_empresa'
         });
     }

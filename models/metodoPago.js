@@ -22,10 +22,14 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     MetodoPago.associate = (models) => {
-        const { Pago } = models;
+        const { Pago, Empresa, MetodoDePagoEmpresa } = models;
 
         MetodoPago.hasMany(Pago, {
             foreignKey: "fk_id_metodo_de_pago"
+        });
+        MetodoPago.belongsToMany(Empresa, {
+            through: MetodoDePagoEmpresa,
+            foreignKey: 'fk_id_metodo_de_pago'
         });
     }
 
