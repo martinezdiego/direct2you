@@ -28,6 +28,7 @@ const pedido = require('./routes/pedido');
 const reclamo = require('./routes/reclamo');
 const ubicacionUsuario = require('./routes/ubicacionUsuario');
 const metodoDePagoEmpresa = require('./routes/metodoDePagoEmpresa');
+const productoEmpresa = require('./routes/productoEmpresa');
 
 // App config
 const app = express();
@@ -111,6 +112,7 @@ app.use("/api/pedidos", pedido);
 app.use("/api/reclamos", reclamo);
 app.use("/api/ubicaciones_usuario", ubicacionUsuario);
 app.use("/api/metodos_de_pago_empresa", metodoDePagoEmpresa);
+app.use("/api/productos_empresa", productoEmpresa);
 
 app.use("/", (req, res) => {
     res.send({ message: "Hello from Express" });
