@@ -26,7 +26,8 @@ models.MetodoPago = require('./metodoPago')(sequelize, DataTypes);
 models.Pedido = require('./pedido')(sequelize, DataTypes);
 models.Pago = require('./pago')(sequelize, DataTypes);
 models.Reclamo = require('./reclamo')(sequelize, DataTypes);
-models.UbicacionUsuario = require('./ubicacionUsuario')(sequelize, DataTypes)
+models.UbicacionUsuario = require('./ubicacionUsuario')(sequelize, DataTypes);
+models.MetodoDePagoEmpresa = require('./metodoDePagoEmpresa')(sequelize, DataTypes);
 
 models.TipoUsuario.associate(models);
 models.Usuario.associate(models);
@@ -44,6 +45,7 @@ models.Pedido.associate(models);
 models.Pago.associate(models);
 models.Reclamo.associate(models);
 models.UbicacionUsuario.associate(models);
+models.MetodoDePagoEmpresa.associate(models);
 
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;
