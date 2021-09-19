@@ -2,9 +2,9 @@ import React, { PureComponent } from 'react';
 import { Layout } from 'antd';
 import { Steps, Button, message } from 'antd';
 import { DoubleRightOutlined, DoubleLeftOutlined } from '@ant-design/icons';
-import First_content from './ContentRegPedido/First_content'
-import Second_content from './ContentRegPedido/Second_content';
-import Third_content from './ContentRegPedido/Third_content';
+import FirstContent from './ContentRegPedido/First_content';
+import SecondContent from './ContentRegPedido/Second_content';
+import ThirdContent from './ContentRegPedido/Third_content';
 
 
 const { Content } = Layout;
@@ -13,15 +13,15 @@ const { Step } = Steps;
 const steps = [
   {
     title: <div className="steps-titles">Direccion de Entrega</div>,
-    content: <First_content />,
+    content: <FirstContent />,
   },
   {
     title: <div className="steps-titles">Forma de Pago</div>,
-    content: <Second_content />,
+    content: <SecondContent />,
   },
   {
     title: <div className="steps-titles">Confirmar</div>,
-    content: <Third_content />,
+    content: <ThirdContent />,
   },
 ];
 

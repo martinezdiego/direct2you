@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import { Form, Input, Col, Row, Divider } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
 
 const datos = [
   {
@@ -117,10 +116,17 @@ const ViewFormDirection = () => {
   );
 };
 
-class Third_content extends PureComponent {
+class ThirdContent extends PureComponent {
   constructor(props){
     super(props);
+    this.count = 0
     this.state = {Subtotal:0};
+  }
+  GetSubTotal(){
+    for (var i=0; i<datos[2]["pedido"].length;i++){
+      this.count = this.count + parseFloat(datos[2]["pedido"][i]["costo"])
+    }
+
   }
   render(){
     const listItems = datos[2]["pedido"].map((dato) => 
@@ -128,17 +134,12 @@ class Third_content extends PureComponent {
         <Row style={{width:'95%'}}>
           <Col xs={{span:5,}} lg={{span:3}}><div className="steps-subtitles2" style={{textAlign:'center'}}>{dato["cantidad"]}</div></Col>
           <Col xs={{span:14,}} lg={{span:18}}><div className="steps-subtitles2" style={{textAlign:'center'}}>{dato["item"]}</div></Col>
-          <Col xs={{span:5,}} lg={{span:3}}><div className="steps-subtitles2" style={{textAlign:'center'}}>{dato["costo"]}</div></Col>             
+          <Col xs={{span:5,}} lg={{span:3}}><div className="steps-subtitles2" style={{textAlign:'center'}}>{dato["costo"]}</div></Col>
         </Row>
       </>
     );
     
-    datos[2]["pedido"].map( (dato)=> 
-    <>
-      {this.state.Subtotal = this.state.Subtotal+ parseFloat(dato["costo"])}
-    </>
-    );
-
+    this.GetSubTotal()
     return (
         <div>
             <div style={{marginBottom:'3%'}}>
@@ -161,7 +162,7 @@ class Third_content extends PureComponent {
                     </Col>
                   </Row>
                   <Divider />{listItems}<Divider />
-                  <div className="steps-subtitles2" style={{textAlign:'left',marginLeft:'5%'}}>Sub Total: {this.state.Subtotal}</div>
+                  <div className="steps-subtitles2" style={{textAlign:'left',marginLeft:'5%'}}>Sub Total: {this.count}</div>
                 </Col>
 
                 <Col xs={{span:24}} lg={{span:10}}>
@@ -178,4 +179,4 @@ class Third_content extends PureComponent {
   }
 }
 
-export default Third_content;
+export default ThirdContent;
