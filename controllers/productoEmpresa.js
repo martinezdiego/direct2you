@@ -4,24 +4,24 @@ const { ProductoEmpresa, Empresa, Producto } = require('../models');
 
 
 exports.create = [
-//     body("fk_id_usuario")
-//     .exists()
-//     .withMessage("must be specified")
-//     .custom(async (value) => {
-//         const response = await Usuario.findByPk(value);
-//         if (!response) {
-//             throw new Error('invalid id');
-//         }
-//     }),
-//     body("fk_id_ubicacion")
-//     .exists()
-//     .withMessage("must be specified")
-//     .custom(async (value) => {
-//         const response = await Ubicacion.findByPk(value);
-//         if (!response) {
-//             throw new Error('invalid id');
-//         }
-//     }),
+    body('fk_id_empresa')
+    .exists()
+    .withMessage('must be specified')
+    .custom(async (value) => {
+        const response = await Empresa.findByPk(value);
+        if (!response) {
+            throw new Error('invalid id');
+        }
+    }),
+    body('fk_id_producto')
+    .exists()
+    .withMessage('must be specified')
+    .custom(async (value) => {
+        const response = await Producto.findByPk(value);
+        if (!response) {
+            throw new Error('invalid id');
+        }
+    }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -63,15 +63,15 @@ exports.findAll = async (req, res) => {
 };
 
 exports.findAllOfCompany = [
-//     param("id")
-//     .exists()
-//     .withMessage("must be specified")
-//     .custom(async (value) => {
-//         const response = await Usuario.findByPk(value);
-//         if (!response) {
-//             throw new Error('invalid id');
-//         }
-//     }),
+    param('id')
+    .exists()
+    .withMessage('must_be_specified')
+    .custom(async (value) => {
+        const response = await Empresa.findByPk(value);
+        if (!response) {
+            throw new Error('invalid id');
+        }
+    }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -97,24 +97,24 @@ exports.findAllOfCompany = [
 ];
 
 exports.deleteOneOfCompany = [
-//     param("userId")
-//     .exists()
-//     .withMessage("must be specified")
-//     .custom(async (value) => {
-//         const response = await Usuario.findByPk(value);
-//         if (!response) {
-//             throw new Error('invalid id');
-//         }
-//     }),
-//     param("ubicationId")
-//     .exists()
-//     .withMessage("must be specified")
-//     .custom(async (value) => {
-//         const response = await Ubicacion.findByPk(value);
-//         if (!response) {
-//             throw new Error('invalid id');
-//         }
-//     }),
+    param('companyId')
+    .exists()
+    .withMessage('must_be_specified')
+    .custom(async (value) => {
+        const response = await Empresa.findByPk(value);
+        if (!response) {
+            throw new Error('invalid id');
+        }
+    }),
+    param('productId')
+    .exists()
+    .withMessage('must_be_specified')
+    .custom(async (value) => {
+        const response = await Producto.findByPk(value);
+        if (!response) {
+            throw new Error('invalid id');
+        }
+    }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -148,15 +148,15 @@ exports.deleteOneOfCompany = [
 ];
 
 exports.deleteAllOfCompany = [
-//     param("id")
-//     .exists()
-//     .withMessage("must be specified")
-//     .custom(async (value) => {
-//         const response = await Usuario.findByPk(value);
-//         if (!response) {
-//             throw new Error('invalid id');
-//         }
-//     }),
+    param('id')
+    .exists()
+    .withMessage('must_be_specified')
+    .custom(async (value) => {
+        const response = await Empresa.findByPk(value);
+        if (!response) {
+            throw new Error('invalid id');
+        }
+    }),
     async (req, res) => {
         const errors = validationResult(req); 
 
