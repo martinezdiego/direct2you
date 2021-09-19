@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Layout } from 'antd';
 import Navbar from '../components/shared/Navbar';
-import Sidebar from './Dashboard2/Sidebar';
+import Sidebar from '../components/shared/Sidebar.jsx';
 import NavFooter from '../components/shared/footer';
 import ContentDash from './Dashboard2/ContentDash';
 
@@ -11,12 +11,12 @@ class Dashboard2 extends PureComponent {
     return (
     <>
         <Layout>
-          <Sidebar />
-          <Layout style={{ marginLeft: 200 }}>
-            <Navbar isLogged={false}/>
+          <Navbar isLogged={false}/>
+          <Layout className="container-sider-content">
+            <Sidebar side=""/>
             <ContentDash />
-            <NavFooter />
           </Layout>
+          <NavFooter />
         </Layout>
     </>
     );

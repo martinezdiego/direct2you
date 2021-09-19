@@ -6,8 +6,8 @@ const { Content } = Layout;
 class ContentDash extends PureComponent {
   render(){
     return(
-      <Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-        <div className="site-layout-background" style={{ padding: 24, textAlign: 'center' }}>
+      <Content style={{ margin: '24px 16px 0', overflow: 'initial', background:'red' }}>
+        <div className="site-layout-background" style={{ padding: 24, textAlign: 'center' }}>          
           ...
           <br />
           Really
