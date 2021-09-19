@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Radio, Row, Col,Space } from 'antd';
+import { Radio, Row, Col } from 'antd';
 import { createFromIconfontCN, DollarOutlined, EuroOutlined } from '@ant-design/icons';
 
 const IconFont = createFromIconfontCN({
@@ -9,20 +9,12 @@ const IconFont = createFromIconfontCN({
     ],
   });
   
-const metodos_pago = [
-    {
-        paypay: true,
-        visa: false,
-        masterCard:true,
-        transfer:true        
-    },
-    {
-        efectivo: false
+function PaidMethods() {
+    const RadioEvent = (radio) =>{
+        alert('seleccionado radio button '+radio.target.value);
     }
-
-]
-const Paid_methods = (props) => (
-        <Radio.Group style={{width:'90%'}} name="radiogroup" defaultValue={1} size="small" name="online" onChange={props.event}>
+    return(
+        <Radio.Group style={{width:'90%'}} defaultValue={1} size="small" name="online" onChange={RadioEvent}>
             <div className="steps-titles2">Online</div>
             <Row style={{marginBottom:'2%'}}>
                 <Col xs={{ span: 20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
@@ -45,37 +37,34 @@ const Paid_methods = (props) => (
 
             <div className="steps-titles2">En la entrega</div>
             <Row style={{marginBottom:'4%', width:'100%'}}>
-            <Col xs={{ span: 20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
-                <Radio value={5}><DollarOutlined className="steps-iconfont2"/></Radio>
-                <div className="steps-subtitles">Efectivo Bs (o Dolares)</div>
-            </Col>
-            <Col xs={{ span:20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
-                <Radio value={6}><EuroOutlined className="steps-iconfont2"/></Radio>
-                <div className="steps-subtitles">Efectivo Euros</div>
-            </Col>
-            <Col xs={{ span: 20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
-                {/* Colocar otro metodo de pago*/}
-            </Col>
-            <Col xs={{ span: 20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
-                {/* Colocar otro metodo de pago*/}
-            </Col>
-        </Row>
-
+                <Col xs={{ span: 20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
+                    <Radio value={5}><DollarOutlined className="steps-iconfont2"/></Radio>
+                    <div className="steps-subtitles">Efectivo Bs (o Dolares)</div>
+                </Col>
+                <Col xs={{ span:20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
+                    <Radio value={6}><EuroOutlined className="steps-iconfont2"/></Radio>
+                    <div className="steps-subtitles">Efectivo Euros</div>
+                </Col>
+                <Col xs={{ span: 20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
+                    {/* Colocar otro metodo de pago*/}
+                </Col>
+                <Col xs={{ span: 20, offset: 1 }} lg={{ span: 6, offset: 0 }}>
+                    {/* Colocar otro metodo de pago*/}
+                </Col>
+            </Row>
         </Radio.Group>
+    );
+}
 
-);
+class SecondContent extends PureComponent {
 
-class Second_content extends PureComponent {
-  RadioEvent(e) {
-    alert('seleccionado radio button '+e.target.value);
-  }
   render(){
     return (
         <div style={{width:'100%'}}> 
-            <Paid_methods event={this.RadioEvent}/>
+            <PaidMethods />
         </div>
     );
   }
 }
 
-export default Second_content;
+export default SecondContent;
