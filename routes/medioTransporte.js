@@ -6,6 +6,8 @@ router.post("/crear", medioTransporte.create);
 
 router.get("/", medioTransporte.findAll);
 
+router.get("/:id", medioTransporte.findOne);
+
 router.put("/:id", medioTransporte.update);
 
 router.delete("/:id", medioTransporte.delete);
