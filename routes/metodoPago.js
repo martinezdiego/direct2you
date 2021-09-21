@@ -6,6 +6,8 @@ router.post("/crear", metodoPago.create);
 
 router.get("/", metodoPago.findAll);
 
+router.get("/:id", metodoPago.findOne);
+
 router.put("/:id", metodoPago.update);
 
 router.delete("/:id", metodoPago.delete);

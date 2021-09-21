@@ -30,6 +30,7 @@ models.UbicacionUsuario = require('./ubicacionUsuario')(sequelize, DataTypes);
 models.MetodoDePagoEmpresa = require('./metodoDePagoEmpresa')(sequelize, DataTypes);
 models.ProductoEmpresa = require('./productoEmpresa')(sequelize, DataTypes);
 models.ProductoPedido = require('./productoPedido')(sequelize, DataTypes);
+models.OpcionSistema = require('./opcionSistema')(sequelize, DataTypes);
 
 models.TipoUsuario.associate(models);
 models.Usuario.associate(models);
