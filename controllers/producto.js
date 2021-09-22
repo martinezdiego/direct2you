@@ -6,11 +6,15 @@ exports.create = [
     body('nombre_producto')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('cantidad_producto')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim()
+        .isInt({ min: 0 })
+        .withMessage('must be integer and greater than or equal to 0'),
     body('descripcion_producto')
         .exists()
         .withMessage('must be specified')
@@ -18,17 +22,28 @@ exports.create = [
         .withMessage('must have length more than 0 or less than 256'),
     body('precio')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim()
+        .toFloat()
+        .isFloat()
+        .withMessage('must be a float number'),
     body('estado_producto')
         .exists()
         .withMessage('must be specified')
-        .isLength({ min: 1, max: 15 }),
+        .trim()
+        .isLength({ min: 1, max: 15 })
+        .withMessage('must have length more than 0 or less than 16')
+        .toLowerCase()
+        .isIn(['disponible', 'agotado'])        
+        .withMessage('must be a valid type'),
     body('url_imagen_producto')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_id_categoria_producto')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req);
 
@@ -118,11 +133,15 @@ exports.update = [
     body('nombre_producto')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('cantidad_producto')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim()
+        .isInt({ min: 0 })
+        .withMessage('must be integer and greater than or equal to 0'),
     body('descripcion_producto')
         .exists()
         .withMessage('must be specified')
@@ -130,17 +149,28 @@ exports.update = [
         .withMessage('must have length more than 0 or less than 256'),
     body('precio')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim()
+        .toFloat()
+        .isFloat()
+        .withMessage('must be a float number'),
     body('estado_producto')
         .exists()
         .withMessage('must be specified')
-        .isLength({ min: 1, max: 15 }),
+        .trim()
+        .isLength({ min: 1, max: 15 })
+        .withMessage('must have length more than 0 or less than 16')
+        .toLowerCase()
+        .isIn(['disponible', 'agotado'])        
+        .withMessage('must be a valid type'),
     body('url_imagen_producto')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_id_categoria_producto')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req);
 

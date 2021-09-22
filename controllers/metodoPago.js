@@ -6,6 +6,7 @@ exports.create = [
     body('nombre_metodo_de_pago')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')        
         .custom(async (value) => {
@@ -17,7 +18,8 @@ exports.create = [
         }),
     body('url_imagen_metodo_de_pago')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req);
 
@@ -61,6 +63,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await MetodoPago.findByPk(value);
             if (!response) {
@@ -94,6 +97,7 @@ exports.update = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await MetodoPago.findByPk(value);
             if (!response) {
@@ -104,11 +108,13 @@ exports.update = [
     body('nombre_metodo_de_pago')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('url_imagen_metodo_de_pago')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -142,6 +148,7 @@ exports.delete = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await MetodoPago.findByPk(value);
             if (!response) {

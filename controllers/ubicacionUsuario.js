@@ -5,23 +5,25 @@ const { UbicacionUsuario, Usuario, Ubicacion } = require('../models');
 
 exports.create = [
     body("fk_id_usuario")
-    .exists()
-    .withMessage("must be specified")
-    .custom(async (value) => {
-        const response = await Usuario.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Usuario.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     body("fk_id_ubicacion")
-    .exists()
-    .withMessage("must be specified")
-    .custom(async (value) => {
-        const response = await Ubicacion.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Ubicacion.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -64,14 +66,15 @@ exports.findAll = async (req, res) => {
 
 exports.findAllOfUser = [
     param("id")
-    .exists()
-    .withMessage("must be specified")
-    .custom(async (value) => {
-        const response = await Usuario.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Usuario.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -98,23 +101,25 @@ exports.findAllOfUser = [
 
 exports.deleteOneOfUser = [
     param("userId")
-    .exists()
-    .withMessage("must be specified")
-    .custom(async (value) => {
-        const response = await Usuario.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Usuario.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     param("ubicationId")
-    .exists()
-    .withMessage("must be specified")
-    .custom(async (value) => {
-        const response = await Ubicacion.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Ubicacion.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -149,14 +154,15 @@ exports.deleteOneOfUser = [
 
 exports.deleteAllOfUser = [
     param("id")
-    .exists()
-    .withMessage("must be specified")
-    .custom(async (value) => {
-        const response = await Usuario.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Usuario.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 

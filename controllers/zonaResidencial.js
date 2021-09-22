@@ -6,6 +6,7 @@ exports.create = [
     body('nombre_zona_residencial')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-Z ]+$/)
@@ -21,6 +22,7 @@ exports.create = [
     body('fk_id_ciudad')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ciudad.findByPk(value);
             if (!response) {
@@ -70,6 +72,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await ZonaResidencial.findByPk(value);
             if (!response) {
@@ -101,6 +104,7 @@ exports.update = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await ZonaResidencial.findByPk(value);
             if (!response) {
@@ -110,6 +114,7 @@ exports.update = [
     body('nombre_zona_residencial')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-Z ]+$/)
@@ -125,6 +130,7 @@ exports.update = [
     body('fk_id_ciudad')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ciudad.findByPk(value);
             if (!response) {
@@ -164,6 +170,7 @@ exports.delete = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await ZonaResidencial.findByPk(value);
             if (!response) {

@@ -6,6 +6,7 @@ exports.create = [
     body('nombre_categoria_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-z ]+$/)
@@ -59,6 +60,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await CategoriaEmpresa.findByPk(value);
             if (!response) {
@@ -92,6 +94,7 @@ exports.update = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await CategoriaEmpresa.findByPk(value);
             if (!response) {
@@ -102,6 +105,7 @@ exports.update = [
     body('nombre_categoria_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-z ]+$/)
@@ -145,6 +149,7 @@ exports.delete = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await CategoriaEmpresa.findByPk(value);
             if (!response) {
