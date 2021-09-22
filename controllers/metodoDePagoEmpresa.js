@@ -5,33 +5,37 @@ const { MetodoDePagoEmpresa, Empresa, MetodoPago } = require('../models');
 
 exports.create = [
     body('datos_pago_empresa')
-    .exists()
-    .withMessage('must be specified')
-    .isLength({ min: 1, max: 255 })
-    .withMessage('must have length more than 0 and less than 256'),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .isLength({ min: 1, max: 255 })
+        .withMessage('must have length more than 0 and less than 256'),
     body('descripcion')
-    .exists()
-    .withMessage('must be specified')
-    .isLength({ min: 1, max: 255 })
-    .withMessage('must have length more than 0 and less than 256'),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .isLength({ min: 1, max: 255 })
+        .withMessage('must have length more than 0 and less than 256'),
     body('fk_id_empresa')
-    .exists()
-    .withMessage('must be specified')
-    .custom(async (value) => {
-        const response = await Empresa.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Empresa.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     body('fk_id_metodo_de_pago')
-    .exists()
-    .withMessage('must be specified')
-    .custom(async (value) => {
-        const response = await MetodoPago.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await MetodoPago.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -76,14 +80,15 @@ exports.findAll = async (req, res) => {
 
 exports.findAllOfCompany = [
     param('id')
-    .exists()
-    .withMessage("must be specified")
-    .custom(async (value) => {
-        const response = await Empresa.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage("must be specified")
+        .trim()
+        .custom(async (value) => {
+            const response = await Empresa.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -110,23 +115,25 @@ exports.findAllOfCompany = [
 
 exports.deleteOneOfCompany = [
     param('companyId')
-    .exists()
-    .withMessage('must be specified')
-    .custom(async (value) => {
-        const response = await Empresa.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Empresa.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     param('paymentMethodId')
-    .exists()
-    .withMessage('must be specified')
-    .custom(async (value) => {
-        const response = await MetodoPago.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await MetodoPago.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -161,14 +168,15 @@ exports.deleteOneOfCompany = [
 
 exports.deleteAllOfCompany = [
     param('id')
-    .exists()
-    .withMessage('must be specified')
-    .custom(async (value) => {
-        const response = await Empresa.findByPk(value);
-        if (!response) {
-            throw new Error('invalid id');
-        }
-    }),
+        .exists()
+        .withMessage('must be specified')
+        .trim()
+        .custom(async (value) => {
+            const response = await Empresa.findByPk(value);
+            if (!response) {
+                throw new Error('invalid id');
+            }
+        }),
     async (req, res) => {
         const errors = validationResult(req); 
 

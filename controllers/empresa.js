@@ -6,11 +6,13 @@ exports.create = [
     body('nombre_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('correo_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isEmail()
         .withMessage('must be a valid email address')
         .custom(async (value) => {
@@ -23,6 +25,7 @@ exports.create = [
     body('num_telefono_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
         .withMessage('must be a valid phone number')
         .custom(async (value) => {
@@ -35,6 +38,7 @@ exports.create = [
     body('num_rif')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^J-?[0-9]{8}-?[0-9]?/)
         .withMessage('must have a prefix of J followed by a rif number')
         .custom(async (value) => {
@@ -47,17 +51,22 @@ exports.create = [
     body('estado_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
+        .toLowerCase()
         .isIn(['habilitado', 'deshabilitado'])
         .withMessage('must be a valid type'),
     body('url_imagen_empresa')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_id_categoria_empresa')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_id_ubicacion')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -107,6 +116,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Empresa.findByPk(value);
             if (!response) {
@@ -140,6 +150,7 @@ exports.update = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Empresa.findByPk(value);
             if (!response) {
@@ -150,11 +161,13 @@ exports.update = [
     body('nombre_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('correo_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isEmail()
         .withMessage('must be a valid email address')
         .custom(async (value) => {
@@ -167,6 +180,7 @@ exports.update = [
     body('num_telefono_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
         .withMessage('must be a valid phone number')
         .custom(async (value) => {
@@ -179,6 +193,7 @@ exports.update = [
     body('num_rif')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^J-?[0-9]{8}-?[0-9]?/)
         .withMessage('must have a prefix of J followed by a rif number')
         .custom(async (value) => {
@@ -191,17 +206,22 @@ exports.update = [
     body('estado_empresa')
         .exists()
         .withMessage('must be specified')
+        .trim()
+        .toLowerCase()
         .isIn(['habilitado', 'deshabilitado'])
         .withMessage('must be a valid type'),
     body('url_imagen_empresa')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_id_categoria_empresa')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_id_ubicacion')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -241,6 +261,7 @@ exports.delete = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Empresa.findByPk(value);
             if (!response) {

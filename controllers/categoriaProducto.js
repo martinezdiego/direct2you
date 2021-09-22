@@ -6,6 +6,7 @@ exports.create = [
     body('nombre_categoria_producto')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 45 })
         .withMessage('must have length more than 0 and less than 46')
         .matches(/^[a-zA-z ]+$/)

@@ -6,6 +6,7 @@ exports.create = [
     body('num_placa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 45 })
         .withMessage('must have length more than 0 and less than 46')
         .custom(async (value) => {
@@ -18,11 +19,13 @@ exports.create = [
     body('estado_medio_transporte')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 15 })
         .withMessage('must have length more than 0 and less than 16'),
     body('fk_id_tipo_medio_transporte')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req);
 
@@ -67,6 +70,7 @@ exports.findOne = [
     param('id_medio_transporte')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const medioTransporte = await MedioTransporte.findByPk(value);
             if(medioTransporte === null) {
@@ -108,16 +112,19 @@ exports.update = [
     body('num_placa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 45 })
         .withMessage('must have length more than 0 and less than 46'),             
     body('estado_medio_transporte')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 15 })
         .withMessage('must have length more than 0 and less than 16'),
     body('fk_id_tipo_medio_transporte')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req);
 
