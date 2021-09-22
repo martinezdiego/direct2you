@@ -6,6 +6,7 @@ exports.create = [
     body('nombre_opcion')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 45 })
         .withMessage('must have length more than 0 and less than 46')        
         .custom(async (value) => {
@@ -57,6 +58,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await OpcionSistema.findByPk(value);
             if (!response) {
@@ -90,6 +92,7 @@ exports.update = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await OpcionSistema.findByPk(value);
             if (!response) {
@@ -100,6 +103,7 @@ exports.update = [
     body('nombre_opcion')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 45 })
         .withMessage('must have length more than 0 and less than 46')        
         .custom(async (value) => {
@@ -141,6 +145,7 @@ exports.delete = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await OpcionSistema.findByPk(value);
             if (!response) {
