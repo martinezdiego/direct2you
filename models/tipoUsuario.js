@@ -18,10 +18,14 @@ module.exports = (sequelize, DataTypes) => {
     });
     
     TipoUsuario.associate = (models) => {
-        const { Usuario } = models;
+        const { Usuario, OpcionSistema, UsuarioOpcion } = models;
         
         TipoUsuario.hasOne(Usuario, {
             foreignKey: "fk_tipo_usuario"
+        });
+        TipoUsuario.belongsToMany(OpcionSistema, {
+            through: UsuarioOpcion,
+            foreignKey: 'fk_id_tipo_usuario'
         });
     };
     

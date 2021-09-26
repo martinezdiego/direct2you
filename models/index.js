@@ -31,6 +31,7 @@ models.MetodoDePagoEmpresa = require('./metodoDePagoEmpresa')(sequelize, DataTyp
 models.ProductoEmpresa = require('./productoEmpresa')(sequelize, DataTypes);
 models.ProductoPedido = require('./productoPedido')(sequelize, DataTypes);
 models.OpcionSistema = require('./opcionSistema')(sequelize, DataTypes);
+models.UsuarioOpcion = require('./usuarioOpcion')(sequelize, DataTypes);
 
 models.TipoUsuario.associate(models);
 models.Usuario.associate(models);
@@ -51,6 +52,8 @@ models.UbicacionUsuario.associate(models);
 models.MetodoDePagoEmpresa.associate(models);
 models.ProductoEmpresa.associate(models);
 models.ProductoPedido.associate(models);
+models.OpcionSistema.associate(models);
+models.UsuarioOpcion.associate(models);
 
 models.sequelize = sequelize;
 models.Sequelize = Sequelize;

@@ -17,6 +17,15 @@ module.exports = (sequelize, DataTypes) => {
         underscore: true,
         timestamps: false
     });    
-
+    
+    OpcionSistema.associate = (models) => {
+        const { UsuarioOpcion, TipoUsuario } = models;
+        
+        OpcionSistema.belongsToMany(TipoUsuario, {
+            through: UsuarioOpcion,
+            foreignKey: 'fk_id_opcion'
+        });
+    }
+    
     return OpcionSistema;
 };
