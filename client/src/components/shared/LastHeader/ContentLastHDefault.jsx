@@ -7,10 +7,12 @@ class ContentLastDefault extends PureComponent{
 
 	render(){
 			return (
-				<Content>
-					<div style={{textAlign:"center"}}>
-						<h2 style={{fontSize:'40px'}}>Con Direct2You tus productos llegan directo a casa!</h2>
-						<h3 style={{fontSize:'15px', marginTop:'0px'}}>Mercado, Restaurante, reposteria, productos del hogar, farmacia y mas...</h3>
+				<Content className="LHDefault-container">
+					<div className="LHDefaultcontainerMask">
+						<div >
+							<h1 className="LHDefault-h1-text">Con Direct2You tus productos llegan directo a casa!</h1>
+							<h2 className="LHDefault-h2-text">Mercado, Restaurante, reposteria, productos del hogar, farmacia y mas...</h2>
+						</div>
 					</div>
 				</Content>
 			);
