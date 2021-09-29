@@ -8,10 +8,11 @@ import Registro from './pages/Registro';
 import login from './pages/Login';
 import RegistroCompany from './pages/RegistroEmpresa';
 import home from './pages/Home';
-import dashboard from './pages/Dashboard2';
+import dashboard from './pages/ListCompanies';
 import forgot from './pages/Forgot';
 import PerfilUser from './pages/PerfilUser'
 import AddPedido from './pages/RegistrarPedido'
+import ListCompanies from './pages/ListCompanies'
 
 import 'antd/dist/antd.css';
 import './assets/css/index.css';
@@ -39,6 +40,7 @@ class App extends PureComponent
                     <Route path="/forgot" component={forgot}/>
                     <Route path="/perfil-user" component={PerfilUser}/>
                     <Route path="/Add-pedido" component={AddPedido} />
+                    <Route path="/companies" component={ListCompanies} />
                 </Switch>
             </Layout>
         );
