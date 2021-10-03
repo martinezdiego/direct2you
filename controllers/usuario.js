@@ -361,7 +361,9 @@ exports.login = [
                     return next(err); 
                     
                 }
-                res.status(200).send({ 
+                console.log(user.id_usuario);
+                res.status(200).send({
+                    userId: user.id_usuario,
                     status: true, 
                     message: "user has been logged in" 
                 });
