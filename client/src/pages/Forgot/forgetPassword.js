@@ -7,6 +7,10 @@ const { Content } = Layout;
 
 class ForgetPassword extends PureComponent {
     render(){
+        const onFinish = (values) => {
+            console.log('Received values of form: ', values);
+            window.location.href = "/forgotok";
+        };
         return (
             <Content style={{ padding: '0 50px', marginTop: 120 , marginBottom:120}}>
             <div>
@@ -17,7 +21,7 @@ class ForgetPassword extends PureComponent {
                     name="normal_login"
                     layout="vertical"
                     className="login-form"
-                    
+                    onFinish={onFinish}                    
                 >
                     <Form.Item
                         className="login-form"
@@ -27,10 +31,10 @@ class ForgetPassword extends PureComponent {
                         //labelAlign = 'right'
                         name="correo electronico" 
                         rules={[{ required: true, message: 'Por favor ingrese su correo electronico!' },
-                                    {type:"email", message: 'Por favor ingrese un Correo valido'}
+                                    {type:"email", message: 'Por favor ingrese un Correo valido'},
                         ]}    
                     >
-                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="correo electronico" />
+                        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="correo electronico"/>
                     </Form.Item>
 
                     <Form.Item >

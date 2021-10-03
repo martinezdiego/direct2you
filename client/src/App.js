@@ -10,6 +10,7 @@ import RegistroCompany from './pages/RegistroEmpresa';
 import home from './pages/Home';
 import dashboard from './pages/Dashboard2';
 import forgot from './pages/Forgot';
+import forgotok from './pages/ForgotSuccess';
 
 import 'antd/dist/antd.css';
 import './assets/css/index.css';
@@ -21,7 +22,7 @@ class App extends PureComponent
         const { history, location } = this.props;
         const { pathname } = location;
         if (pathname === '/') {
-            history.push('/home');
+            history.push('/forgotok');
         }
     }
 
@@ -35,6 +36,7 @@ class App extends PureComponent
                     <Route path="/home" component={home} />
                     <Route path="/dashboard" component={dashboard} />
                     <Route path="/forgot" component={forgot}/>
+                    <Route path="/forgotok" component={forgotok}/>
                 </Switch>
             </Layout>
         );
