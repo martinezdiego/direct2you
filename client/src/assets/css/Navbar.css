@@ -52,3 +52,11 @@ ul.nav-ul-right > li > span.anticon {
 .ant-layout-header {
   padding: 0px;
 }
+
+@media  screen and (max-width:600px) {
+  .nav-user-img, .nav-title{
+    font-size: 15px;
+    width: 30px;
+    height: 30px;
+  }
+}

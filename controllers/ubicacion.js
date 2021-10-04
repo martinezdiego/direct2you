@@ -6,31 +6,37 @@ exports.create = [
     body('alias')
         .exists()
         .withMessage('must be specified')
+        .trim()        
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('calle')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('edificio_casa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('piso_apto')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('punto_referencia')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('fk_id_ciudad')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ciudad.findByPk(value);
             if (!response) {
@@ -40,6 +46,7 @@ exports.create = [
     body('fk_id_sector')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await ZonaResidencial.findByPk(value);
             if (!response) {
@@ -94,6 +101,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ubicacion.findByPk(value);
             if (!response) {
@@ -126,6 +134,7 @@ exports.update = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ubicacion.findByPk(value);
             if (!response) {
@@ -135,31 +144,37 @@ exports.update = [
     body('alias')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('calle')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('edificio_casa')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('piso_apto')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('punto_referencia')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256'),
     body('fk_id_ciudad')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ciudad.findByPk(value);
             if (!response) {
@@ -169,6 +184,7 @@ exports.update = [
     body('fk_id_sector')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await ZonaResidencial.findByPk(value);
             if (!response) {
@@ -213,6 +229,7 @@ exports.delete = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ubicacion.findByPk(value);
             if (!response) {

@@ -9,6 +9,7 @@ exports.create = [
     body('nombre_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
@@ -16,6 +17,7 @@ exports.create = [
     body('apellido')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 or less than 256')
         .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
@@ -23,6 +25,7 @@ exports.create = [
     body('correo_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isEmail()
         .withMessage('must be a valid email address')
         .custom(async (value) => {
@@ -42,6 +45,7 @@ exports.create = [
     body('num_telefono_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
         .withMessage('must be a valid phone number')
         .custom(async (value) => {
@@ -54,6 +58,7 @@ exports.create = [
     body('num_cedula')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^[V|E|J|G]-?[0-9]{8}-?[0-9]?/)
         .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number')
         .custom(async (value) => {
@@ -66,14 +71,18 @@ exports.create = [
     body('estado_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
+        .toLowerCase()
         .isIn(['habilitado', 'deshabilitado'])
         .withMessage('must be a valid type'),
     body('url_imagen_usuario')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_tipo_usuario')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -124,6 +133,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const usuario = await Usuario.findByPk(value);
             if (usuario === null) {
@@ -165,6 +175,7 @@ exports.update = [
     body('nombre_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
@@ -172,6 +183,7 @@ exports.update = [
     body('apellido')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 or less than 256')
         .matches(/^[a-zA-Z]+ ?[a-zA-Z]+$/)
@@ -179,6 +191,7 @@ exports.update = [
     body('correo_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isEmail()
         .withMessage('must be a valid email address')
         .custom(async (value) => {
@@ -198,6 +211,7 @@ exports.update = [
     body('num_telefono_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im)
         .withMessage('must be a valid phone number')
         .custom(async (value) => {
@@ -210,6 +224,7 @@ exports.update = [
     body('num_cedula')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .matches(/^[V|E|J|G]-?[0-9]{8}-?[0-9]?/)
         .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number')
         .custom(async (value) => {
@@ -222,14 +237,18 @@ exports.update = [
     body('estado_usuario')
         .exists()
         .withMessage('must be specified')
+        .trim()
+        .toLowerCase()
         .isIn(['habilitado', 'deshabilitado'])
         .withMessage('must be a valid type'),
     body('url_imagen_usuario')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     body('fk_tipo_usuario')
         .exists()
-        .withMessage('must be specified'),
+        .withMessage('must be specified')
+        .trim(),
     async (req, res) => {
         const errors = validationResult(req); 
 
@@ -342,7 +361,9 @@ exports.login = [
                     return next(err); 
                     
                 }
-                res.status(200).send({ 
+                console.log(user.id_usuario);
+                res.status(200).send({
+                    userId: user.id_usuario,
                     status: true, 
                     message: "user has been logged in" 
                 });

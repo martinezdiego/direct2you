@@ -3,13 +3,15 @@ import { Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import { withRouter } from 'react-router';
 
-// import Ingresar from './pages/Ingresar';
 import Registro from './pages/Registro';
 import login from './pages/Login';
 import RegistroCompany from './pages/RegistroEmpresa';
 import home from './pages/Home';
-import dashboard from './pages/Dashboard2';
+import dashboard from './pages/ListCompanies';
 import forgot from './pages/Forgot';
+import PerfilUser from './pages/PerfilUser'
+import AddPedido from './pages/RegistrarPedido'
+import ListCompanies from './pages/ListCompanies'
 import forgotok from './pages/ForgotSuccess';
 import shopping from './pages/Shopping';
 
@@ -23,7 +25,7 @@ class App extends PureComponent
         const { history, location } = this.props;
         const { pathname } = location;
         if (pathname === '/') {
-            history.push('/shopping');
+            history.push('/home');
         }
     }
 
@@ -39,6 +41,9 @@ class App extends PureComponent
                     <Route path="/forgot" component={forgot}/>
                     <Route path="/forgotok" component={forgotok}/>
                     <Route path="/shopping" component={shopping}/>
+                    <Route path="/perfil-user" component={PerfilUser}/>
+                    <Route path="/Add-pedido" component={AddPedido} />
+                    <Route path="/companies" component={ListCompanies} />
                 </Switch>
             </Layout>
         );

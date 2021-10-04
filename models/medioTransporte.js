@@ -23,10 +23,13 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     MedioTransporte.associate = (models) => {
-        const { TipoMedioTransporte } = models;
+        const { TipoMedioTransporte, Pedido } = models;
 
         MedioTransporte.belongsTo(TipoMedioTransporte, {
             foreignKey: "fk_id_tipo_medio_transporte"
+        });
+        MedioTransporte.hasMany(Pedido, {
+            foreignKey: 'fk_id_medio_transporte'
         });
     };
 

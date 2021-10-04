@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
 import { Layout, Button, Space,Menu, Dropdown } from 'antd';
-import { BellOutlined, MenuOutlined, UserOutlined, DownOutlined, GlobalOutlined } from '@ant-design/icons';
+import { BellOutlined, MenuOutlined, UserOutlined, 
+        DownOutlined, GlobalOutlined,
+        UnorderedListOutlined,
+        SettingFilled, UserSwitchOutlined } from '@ant-design/icons';
 import userpic from '../../assets/img/user-icon-image-13.jpg';
 
 const { Header } = Layout;
@@ -19,7 +22,7 @@ class Navbar extends PureComponent {
     }
     
     resize() {
-        let currentHideNav = (window.innerWidth <= 550);
+        let currentHideNav = (window.innerWidth <= 660);
         if (currentHideNav !== this.state.hideNav) {
             this.setState({hideNav: currentHideNav});
         }
@@ -56,8 +59,53 @@ class Navbar extends PureComponent {
               </Menu.Item>
             </Menu>
         );
+
+        const menu_user = (
+            <Menu>
+                <Menu.Item key="ver_pedidos" icon={<UnorderedListOutlined />}>
+                    Mis Pedidos
+                </Menu.Item>
+                <Menu.Item key="ajustes" icon={<SettingFilled />}>
+                    <a href="/perfil-user">Ajustes</a>
+                </Menu.Item>
+                <Menu.Item key="desconectar" icon={<UserSwitchOutlined />}>
+                    Salir
+                </Menu.Item>
+            </Menu>
+        );
     
-        if (isLogged){
+        if (this.state.hideNav){
+            if (isLogged){
+                return(
+                    <Header className="navbar">
+                        <ul className="nav-ul-left">
+                            <li className="nav-title">Direct2You</li>
+                        </ul>
+                        <ul className="nav-ul-right">
+                            <li>
+                                <Dropdown overlay={menu_user}>
+                                    <li><img src={userpic} className="nav-user-img" alt=''></img></li>
+                                </Dropdown>
+                            </li>
+                        </ul>
+                    </Header>
+                )
+            }else{
+                return(
+                    <Header className="navbar">
+                        <ul className="nav-ul-left">
+                            <li>
+                                <Dropdown overlay={menu}>
+                                    <li><MenuOutlined className="menu-icon"/></li>
+                                </Dropdown>
+                            </li>
+
+                            <li className="nav-title">Direct2You</li>
+                        </ul>
+                    </Header>
+                )
+            }
+        }else if (isLogged){
             return(
                 <Header className="navbar">
                     <ul className="nav-ul-left">
@@ -66,21 +114,9 @@ class Navbar extends PureComponent {
                     </ul>
                     <ul className="nav-ul-right">
                         <li><BellOutlined /></li>
-                        <li><img src={userpic} className="nav-user-img" alt=''></img></li>
-                    </ul>
-                </Header>
-            )
-        }else if (this.state.hideNav){
-            return(
-                <Header className="navbar">
-                    <ul className="nav-ul-left">
-                        <li>
-                            <Dropdown overlay={menu}>
-                                <li><MenuOutlined className="menu-icon"/></li>
-                            </Dropdown>
-                        </li>
-
-                        <li className="nav-title">Direct2You</li>
+                        <Dropdown overlay={menu_user}>
+                            <li><img src={userpic} className="nav-user-img" alt=''></img></li>
+                        </Dropdown>
                     </ul>
                 </Header>
             )

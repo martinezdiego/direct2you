@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const cors = require('cors');
 
 const settings = require('./settings');
 
@@ -22,6 +23,16 @@ const producto = require('./routes/producto');
 const categoriaProducto = require('./routes/categoriaProducto');
 const medioTransporte = require('./routes/medioTransporte');
 const tipoMedioTransporte = require('./routes/tipoMedioTransporte');
+const metodoPago = require('./routes/metodoPago');
+const pago = require('./routes/pago');
+const pedido = require('./routes/pedido');
+const reclamo = require('./routes/reclamo');
+const ubicacionUsuario = require('./routes/ubicacionUsuario');
+const metodoDePagoEmpresa = require('./routes/metodoDePagoEmpresa');
+const productoEmpresa = require('./routes/productoEmpresa');
+const productoPedido = require('./routes/productoPedido');
+const opcionSistema = require('./routes/opcionSistema');
+const usuarioOpcion = require('./routes/usuarioOpcion');
 
 // App config
 const app = express();
@@ -42,6 +53,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 // Database connection
 // models.sequelize.sync();
@@ -98,7 +110,18 @@ app.use("/api/ubicaciones", ubicacion);
 app.use("/api/productos", producto);
 app.use("/api/categoria_productos", categoriaProducto);
 app.use("/api/medios_transporte", medioTransporte);
-app.use("/api/tipos_medio_transporte", tipoMedioTransporte)
+app.use("/api/tipos_medio_transporte", tipoMedioTransporte);
+app.use("/api/metodos_pago", metodoPago);
+app.use("/api/pagos", pago);
+app.use("/api/pedidos", pedido);
+app.use("/api/reclamos", reclamo);
+app.use("/api/ubicaciones_usuario", ubicacionUsuario);
+app.use("/api/metodos_de_pago_empresa", metodoDePagoEmpresa);
+app.use("/api/productos_empresa", productoEmpresa);
+app.use("/api/productos_pedido", productoPedido);
+app.use("/api/opciones_sistema", opcionSistema);
+app.use("/api/opciones_usuario", usuarioOpcion);
+
 
 app.use("/", (req, res) => {
     res.send({ message: "Hello from Express" });

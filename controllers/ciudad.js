@@ -6,6 +6,7 @@ exports.create = [
     body('nombre_ciudad')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-Z]+$/)
@@ -58,6 +59,7 @@ exports.findOne = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ciudad.findByPk(value);
             if (!response) {
@@ -89,6 +91,7 @@ exports.update = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ciudad.findByPk(value);
             if (!response) {
@@ -98,6 +101,7 @@ exports.update = [
     body('nombre_ciudad')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .isLength({ min: 1, max: 255 })
         .withMessage('must have length more than 0 and less than 256')
         .matches(/^[a-zA-Z]+$/)
@@ -140,6 +144,7 @@ exports.delete = [
     param('id')
         .exists()
         .withMessage('must be specified')
+        .trim()
         .custom(async (value) => {
             const response = await Ciudad.findByPk(value);
             if (!response) {

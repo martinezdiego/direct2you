@@ -5,3 +5,41 @@ ul.ant-menu {
 li.ant-menu-submenu svg {
     font-size: 17px;
 }
+
+.drawer-handle {
+    position: fixed;
+    top: 72px;
+    width: 42px;
+    left: 0;
+    height: 40px;
+    cursor: pointer;
+    z-index: 0;
+    text-align: center;
+    line-height: 40px;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 10px;
+}
+.container-sider-content{
+    margin-left: 200px;
+}
+.text-menu-sider{
+    font-size: 16px;
+}
+.text-submenu-sider{
+    font-size: 14px;
+}
+@media screen and (max-width:660px) {
+    .container-sider-content{
+        margin: 0;
+    }
+    .text-menu-sider{
+        font-size: 10px;
+    }
+    .text-submenu-sider{
+        font-size: 9px;
+    }
+}

@@ -1,0 +1,80 @@
+.Card {
+    background-color: black;
+    border-radius: 0.25rem;
+    box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 450px;
+    height: 100%;
+    margin-top: 5%;
+  }
+.card__text {
+  flex: 1 1 auto;
+  font-size: 20px;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  color: #fff;
+  height: 50px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+.card__title {
+  font-size: 25px;
+  width: 100%;
+  text-align:center;
+  color: #fff;
+  font-style: italic;
+  font-weight: bold;
+}
+.card__image {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 150px;
+  width: 100%;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  filter: contrast(100%);
+  overflow: hidden;
+  position: relative;
+  transition: filter 0.5s cubic-bezier(.43,.41,.22,.91);;
+}
+
+.pagination{
+  width: 89%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-left: 26px;
+}
+.bar-search{
+  width: 90%;
+  margin: 3%;
+}
+@media  screen and (max-width:720px) {
+  .card__title{
+    font-size: 14px;
+  }
+  .Card{
+    width: 175px;
+    margin-top: 3%;
+  }
+  .card__text{
+    font-size: 12px;
+    height: 30%;
+  }
+  .card__image{
+    height: 100px;
+  }
+}
+
+@media screen and (max-width:990px) {
+  .pagination{
+    margin-left: 7%;
+    margin-top: 10%;
+  }
+  .bar-search{
+    width: 100%;
+    margin-left: 10px;
+  }
+}
