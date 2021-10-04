@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const Strategy = require('passport-local').Strategy;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const cors = require('cors');
 
 const settings = require('./settings');
 
@@ -52,6 +53,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 // Database connection
 // models.sequelize.sync();
