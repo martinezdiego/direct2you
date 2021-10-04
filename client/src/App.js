@@ -13,6 +13,9 @@ import forgot from './pages/Forgot';
 import PerfilUser from './pages/PerfilUser'
 import AddPedido from './pages/RegistrarPedido'
 import ListCompanies from './pages/ListCompanies'
+import forgotok from './pages/ForgotSuccess';
+import shopping from './pages/Shopping';
+
 
 import 'antd/dist/antd.css';
 import './assets/css/index.css';
@@ -41,6 +44,8 @@ class App extends PureComponent
                     <Route path="/perfil-user" component={PerfilUser}/>
                     <Route path="/Add-pedido" component={AddPedido} />
                     <Route path="/companies" component={ListCompanies} />
+                    <Route path="/forgotok" component={forgotok}/>
+                    <Route path="/shopping" component={shopping}/>
                 </Switch>
             </Layout>
         );
