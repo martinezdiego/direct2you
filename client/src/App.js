@@ -11,6 +11,7 @@ import home from './pages/Home';
 import dashboard from './pages/Dashboard2';
 import forgot from './pages/Forgot';
 import forgotok from './pages/ForgotSuccess';
+import shopping from './pages/Shopping';
 
 import 'antd/dist/antd.css';
 import './assets/css/index.css';
@@ -22,7 +23,7 @@ class App extends PureComponent
         const { history, location } = this.props;
         const { pathname } = location;
         if (pathname === '/') {
-            history.push('/forgotok');
+            history.push('/shopping');
         }
     }
 
@@ -37,6 +38,7 @@ class App extends PureComponent
                     <Route path="/dashboard" component={dashboard} />
                     <Route path="/forgot" component={forgot}/>
                     <Route path="/forgotok" component={forgotok}/>
+                    <Route path="/shopping" component={shopping}/>
                 </Switch>
             </Layout>
         );

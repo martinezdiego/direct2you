@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
-import { Form, Input, Button, Checkbox, Layout } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Form, Input, Button, Layout } from 'antd';
+import { UserOutlined } from '@ant-design/icons';
 
 const { Content } = Layout;
 
