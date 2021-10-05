@@ -53,6 +53,16 @@ const api = {
         catch (err) {
             throw new Error(err);
         }
+    },
+    signUp: async (data) => {
+        try {
+            const url = `${apiUrl}/api/usuarios/crear`;
+            const response = await fetch(url, POST(data));
+            return response;
+        }
+        catch (err) {
+            throw new Error(err);
+        }
     }
 };
 
