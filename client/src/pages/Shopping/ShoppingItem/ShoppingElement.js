@@ -32,7 +32,11 @@ class ShoppingElement extends React.Component {
 
   render(){
     return (
-      <div className="grid-responsive" style ={{border:'thin solid black', padding:'1rem'}}>
+      // <div>
+      //   Hello
+      // </div>
+      //<div className="grid-responsive" style ={{border:'thin solid black', padding:'1rem', width:'50%'}}>
+      <div style={{justifyContent:'center',textAlign:'center',alignItems:'center',display:'flex'}}>
         <div>
           <p> There is a photo right here </p>
         </div>

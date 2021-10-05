@@ -7,24 +7,27 @@ import '/home/eduardo/Documentos/Bases de Datos/Proyecto /direct2you/client/src/
 
 const { Content } = Layout;
 
-class ShoppingContent extends PureComponent {
+class ShoppingContent extends React.Component {
 
     constructor(props){
         super(props);
     
         this.state = {
             data : props.data,
+            last_index : 0,
             // data : [
             //     {id : 0, productName:'Pizza', Description:'La mejor pizza'},
             //     {id : 1, productName:'Burger', Description:'Hamburguesa con todo'}
             // ],
             number : 0,
-            shopping_cart : props.cart
+            shopping_cart : props.cart,
+            current_list : ['','','','','','']
             // shopping_cart: []
         };
     }
 
     shouldComponentUpdate() {
+        //console.log('Something change')
         return true;
     }
 
@@ -92,10 +95,27 @@ class ShoppingContent extends PureComponent {
     }
     //------------------------------------------------------------------------//
 
+    renderElement(data) {
+        if (data != ''){
+            return <ShoppingElement data_p = {data}  onAddItems={this.AddItems}/>
+        }
+        else{
+            return
+        }
+    }
 
+    // updateList(json_list, last_index)
+    // {
+    //     const {current_list} = this.state;
 
+    //     for (var i = 0; i < json_list.length; i++) 
+    //     {
+    //         current_list[i] = json_list[i]
+    //     }
+    //     this.setState(current_list)
+    // }
 
-
+    
     render(){   
         return (
             <Content>
@@ -113,21 +133,52 @@ class ShoppingContent extends PureComponent {
                     </picture>
                      */}
                 </div>
-                <div style = {{width:'100%', height:'450px', display:'inline-block'}}>
+                <div style = {{width:'100%', height:'600px', display:'inline-block'}}>
                     <div style = {{width:'20%', backgroundColor:'#A0C', float:'left',height:'450px'}}>
                         <h3> Categorias </h3>
                     </div>
                     <div style = {{width:'60%', backgroundColor:'#FFF', float:'left', align:'center', height:'450px' }}>
-                            
-                        {/* <Row gutter={[12, 12]} style={{backgroundColor:'#000'}}>
-                            <Col span={12}/>
-                            <Col span={12}/>
-                            Algo
-                        </Row> */}
                         <h3 style = {{align:'center'}}> Productos </h3>
-                        <div>
+                        {/* {this.updateList(this.state.data, this.last_index)} */}
+                        <Row>
+                            <Col style = {{height:'150px', backgroundColor:'#0F0', width:'50%', float:'left'}} >
+                                {this.renderElement(this.state.current_list[0])}
+                                {/* <ShoppingElement data_p = {this.state.data[0]}  onAddItems={this.AddItems}/> */}
+                            </Col>
+                            <Col style={{height:'150px', backgroundColor:'#0F0', width:'50%', float:'left'}} >
+                            <div style={{justifyContent:'center',textAlign:'center',alignItems:'center',display:'flex'}}>
+                                Elemento 2
+                            </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={{height:'150px', backgroundColor:'#F00', width:'50%', float:'left'}} >
+                            <div style={{justifyContent:'center',textAlign:'center',alignItems:'center',display:'flex'}}>
+                                Elemento
+                            </div>
+                            </Col>
+                            <Col style={{height:'150px', backgroundColor:'#FF0', width:'50%', float:'left'}} >
+                            <div style={{justifyContent:'center',textAlign:'center',alignItems:'center',display:'flex'}}>
+                                Elemento 2
+                            </div>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col style={{height:'150px', backgroundColor:'#F0F', width:'50%', float:'left'}} >
+                            <div style={{justifyContent:'center',textAlign:'center',alignItems:'center',display:'flex'}}>
+                                Elemento
+                            </div>
+                            </Col>
+                            <Col style={{height:'150px', backgroundColor:'#FFF', width:'50%', float:'left'}} >
+                            <div style={{justifyContent:'center',textAlign:'center',alignItems:'center',display:'flex'}}>
+                                Elemento 2
+                            </div>
+                            </Col>
+                        </Row>
+                        
+                        {/* <div>
                             {this.state.data.map((product) => <div key = {product.id}> <ShoppingElement data_p = { product }  onAddItems={this.AddItems}/> </div>)}
-                        </div>
+                        </div> */}
                     </div>
                     <div style = {{width:'20%', backgroundColor:'#AF0', float:'left', height:'450px'}}>
                         <h3> Shopping Cart </h3>
