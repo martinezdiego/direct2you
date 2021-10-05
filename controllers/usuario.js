@@ -59,7 +59,7 @@ exports.create = [
         .exists()
         .withMessage('must be specified')
         .trim()
-        .matches(/^[V|E|J|G]-?[0-9]{8}-?[0-9]?/)
+        .matches(/^[V|E|J|G]-?[0-9]{7,}-?[0-9]?/)
         .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number')
         .custom(async (value) => {
             const usuario = await Usuario.findOne({ where: { num_cedula: value } });
@@ -225,7 +225,7 @@ exports.update = [
         .exists()
         .withMessage('must be specified')
         .trim()
-        .matches(/^[V|E|J|G]-?[0-9]{8}-?[0-9]?/)
+        .matches(/^[V|E|J|G]-?[0-9]{7,}-?[0-9]?/)
         .withMessage('must have a prefix of V,E,J,G followed by a cedula number or a rif number')
         .custom(async (value) => {
             const usuario = await Usuario.findOne({ where: { num_cedula: value } });
