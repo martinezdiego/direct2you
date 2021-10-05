@@ -2,7 +2,6 @@ import api from '../api';
 
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
-export const SIGNUP = 'SIGNUP';
 
 const loginAction = (data) => {
     return {
@@ -17,7 +16,7 @@ export const login = (data) => async (dispatch) => {
         const toJson = await response.json();
         if (response.ok) {
             dispatch(loginAction({ 
-                userId: response.userId
+                userId: toJson.userId
             }));
         }
         else {
