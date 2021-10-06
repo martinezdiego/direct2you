@@ -37,6 +37,8 @@ const usuarioOpcion = require('./routes/usuarioOpcion');
 // App config
 const app = express();
 
+app.use(cors());
+
 const myStore = new SequelizeStore({
     db: models.sequelize,
 });
@@ -53,10 +55,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors());
+
 
 // Database connection
-// models.sequelize.sync();
+models.sequelize.sync();
 myStore.sync();
 
 // Passport setup
