@@ -3,3 +3,10 @@
     grid-template-columns: repeat(auto-fit,minmax(100px, 1fr));
     gap: 1rem;
 }
+
+.col-style {
+    height:'150px';
+    background-color:'#00F';
+    width:'50%';
+    float:'left';
+}

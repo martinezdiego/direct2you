@@ -27,7 +27,7 @@ class App extends PureComponent
         const { history, location } = this.props;
         const { pathname } = location;
         if (pathname === '/') {
-            history.push('/home');
+            history.push('/shopping');
         }
     }
 

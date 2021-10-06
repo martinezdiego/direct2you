@@ -18,8 +18,9 @@ class CartItem extends React.Component {
   render(){
     return (
         <div className="cart-item">
-            {this.props.name} | {this.props.count} ->
-            <button onClick = {this.DelItem}> Del from Cart</button>
+            {this.props.count}x   <i style = {{fontSize:'15px'}}>{this.props.name}</i>
+            {/* {this.props.name} | {this.props.count} -> */}
+            <button onClick = {this.DelItem}> Eliminar </button>
         </div>
     );
   }
