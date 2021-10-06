@@ -2,6 +2,12 @@
 
 > A web platform for delivery services
 
+## Requisites
+
+`node.js`
+`yarn`
+`mysql-server`
+
 ## Usage
 
 Install server and client dependencies
@@ -12,14 +18,30 @@ cd client
 yarn
 ```
 
-To start the server and client at the same time (from the root of the project)
+Create an environmet variable file `.env` in the root of the project, and fill it with your credentials
 
 ```
-yarn dev
+DB_HOST_DEV=localhost
+DB_PORT_DEV=3306
+DB_NAME_DEV=D2Y
+DB_USERNAME_DEV=your_mysql_user
+DB_PASSWORD_DEV=your_mysql_password
 ```
 
-Running the production build on localhost. This will create a production build, then Node will serve the app on http://localhost:5000
+To start the server (from the root of the project)
 
 ```
-NODE_ENV=production yarn dev:server
+yarn server
 ```
+
+To start the client (from the root of the project)
+
+```
+yarn client
+```
+
+Node Server is running in http://localhost:5000
+<br /> 
+Client Server is running in http://localhost:3000
+
+
