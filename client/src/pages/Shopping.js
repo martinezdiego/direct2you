@@ -17,9 +17,13 @@ class Shopping extends PureComponent {
                 {id : 2, productName:'Salad', Description:'Caesar salad'},
                 {id : 3, productName:'Sushi', Description:'Best Sushi ever'},
                 {id : 4, productName:'Hot Dog', Description:'Hot dog'},
-                {id : 5, productName:'Bread', Description:'Bread with chesse'}
+                {id : 5, productName:'Bread', Description:'Bread with chesse'},
+                {id : 6, productName:'Brazo Gitano', Description:'Brazo '},
+                {id : 7, productName:'Cake', Description:'Chocolat cake'},
+                {id : 8, productName:'Ice cream', Description:'Ice cream'},
+                {id : 9, productName:'Salchipapa', Description:'La mejor Salchipapa'}
             ],
-            shopping_cart: []
+            shopping_cart: [],
         };
     }
 

@@ -56,7 +56,7 @@ app.use(passport.session());
 app.use(cors());
 
 // Database connection
-// models.sequelize.sync();
+models.sequelize.sync();
 myStore.sync();
 
 // Passport setup
