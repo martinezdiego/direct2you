@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {Layout, Col, Row} from 'antd';
 import ShoppingElement from './ShoppingItem/ShoppingElement'
 import CartItem from './CartItem/CartItem'
-import '/home/eduardo/Documentos/Bases de Datos/Proyecto /direct2you/client/src/assets/css/ShoppingCart.css'
+import '../../assets/css/ShoppingCart.css'
 
 
 const { Content } = Layout;
